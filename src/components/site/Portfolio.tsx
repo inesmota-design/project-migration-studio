@@ -346,7 +346,7 @@ export function PortfolioPage() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (reducedMotion) {
-      setTypedRole(roles[0]);
+      setTypedRole(roles[0] ?? "");
       return;
     }
 
@@ -356,7 +356,7 @@ export function PortfolioPage() {
     let timeout = 0;
 
     const type = () => {
-      const role = roles[roleIndex];
+      const role = roles[roleIndex] ?? "";
 
       if (!deleting) {
         characterIndex += 1;
