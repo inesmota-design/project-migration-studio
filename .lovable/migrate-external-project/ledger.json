@@ -1,0 +1,117 @@
+{
+  "source": "code-archive (Figma Make: React 19 + Vite + Tailwind v4 single-page portfolio)",
+  "capabilities": [
+    {
+      "capability": "code",
+      "source": "src/App.tsx single page + /produtos view via history.pushState",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "styles",
+      "source": "src/index.css (custom CSS + Google Fonts)",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "assets",
+      "source": "public/assets (images, tool logos, CV + recommendation PDFs), favicon.png",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "metadata",
+      "source": ".figma/make/site.json (description, robots noindex)",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "contact form",
+      "source": "mailto:inesmota.design@gmail.com (client-side, no backend)",
+      "outcome": "preserve",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "language switch PT/EN",
+      "source": "in-memory React state",
+      "outcome": "migrate",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "schema",
+      "source": "none detected",
+      "outcome": "not applicable",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "records",
+      "source": "none detected",
+      "outcome": "not applicable",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "auth identities / authorization",
+      "source": "none detected",
+      "outcome": "not applicable",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "uploaded file bytes / storage",
+      "source": "none (only static public assets)",
+      "outcome": "not applicable",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "external providers",
+      "source": "outbound links only (Behance, LinkedIn, Instagram)",
+      "outcome": "preserve",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "public endpoints / callbacks / webhooks / schedules",
+      "source": "none detected",
+      "outcome": "not applicable",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "secrets",
+      "source": "FIGMA_PUBLIC_URL, FIGMA_DEV_SERVER_HOST, PORT are Figma platform runtime vars",
+      "outcome": "drop (platform metadata)",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "analytics",
+      "source": "none configured in site.json",
+      "outcome": "not applicable",
+      "status": "verified",
+      "next_action": "none"
+    },
+    {
+      "capability": "cutover",
+      "source": "Figma Make hosting",
+      "outcome": "user action",
+      "status": "pending",
+      "next_action": "Publish on Lovable and point domain when ready"
+    },
+    {
+      "capability": "verification",
+      "source": "-",
+      "outcome": "verify",
+      "status": "verified",
+      "next_action": "none"
+    }
+  ]
+}
