@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- The portfolio markup lives in `src/components/site/Portfolio.tsx` (home + Products pages), with routes in `src/routes/index.tsx` and `src/routes/produtos.tsx` as thin wrappers; why: one source for the ported single-page site.
+- PT/EN language is held in `SiteLanguageProvider` (`src/lib/site-language.tsx`) mounted in the root route; why: the choice must survive moving between pages.
+- Downloadable PDFs and site images stay in `public/assets/` (same-origin); why: the `download` filename attribute is ignored for cross-origin files.
