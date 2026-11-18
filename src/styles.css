@@ -89,8 +89,9 @@
   --line: oklch(0.282 0.002 67.7);
   --cream: oklch(0.957 0.019 96.9);
   --stone: oklch(0.689 0.016 94.3);
-  --blue: oklch(0.501 0.231 274.5);
-  --rust: oklch(0.413 0.111 32.9);
+  --blue: oklch(0.455 0.231 267.7);
+  --blue-bright: oklch(0.501 0.231 274.5);
+  --rust: oklch(0.594 0.186 38.5);
 
   --radius: 0.625rem;
   --background: var(--ink);
@@ -213,9 +214,9 @@ a {
 .nav {
   display: flex;
   gap: 30px;
-  font-family: "DM Mono";
-  font-size: 11px;
+  font: 400 11px/16px "Archivo";
   color: #d7d3c8;
+  text-transform: uppercase;
 }
 .nav a {
   position: relative;
@@ -227,7 +228,7 @@ a {
   bottom: -8px;
   width: 0;
   height: 1px;
-  background: var(--blue);
+  background: var(--blue-bright);
   transition: width 0.25s;
 }
 .nav a:hover::after {
@@ -247,11 +248,12 @@ a {
   padding: 3px;
 }
 .language-switch button {
-  font: 10px "DM Mono";
+  font: 400 11px/16px "Archivo";
   color: var(--stone);
   padding: 5px 7px;
   border-radius: 50px;
   cursor: pointer;
+  text-transform: uppercase;
 }
 .language-switch button.active {
   background: var(--cream);
@@ -265,8 +267,9 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 100px;
   padding: 11px 17px;
-  font: 11px "DM Mono";
+  font: 400 11px/16px "Archivo";
   transition: 0.3s ease;
+  text-transform: uppercase;
 }
 .header-cta:hover,
 .primary-button:hover {
@@ -339,7 +342,7 @@ a {
   column-gap: 24px;
   row-gap: 0;
   text-align: center;
-  font-family: "Instrument Serif";
+  font-family: "Archivo";
   font-style: italic;
   font-weight: 400;
   animation: introReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -388,7 +391,7 @@ a {
   width: 2px;
   height: 0.78em;
   margin-left: 0.08em;
-  background: var(--blue);
+  background: var(--blue-bright);
   box-shadow: 0 0 10px rgba(70, 69, 227, 0.8);
   animation: caretBlink 0.75s steps(1, end) infinite;
 }
@@ -431,8 +434,7 @@ a {
 .section-label,
 .section-note,
 .eyebrow {
-  font: 11px "DM Mono";
-  letter-spacing: 0.08em;
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
 }
 .section-label {
@@ -470,10 +472,10 @@ a {
   z-index: 2;
   top: 16px;
   left: 16px;
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
   color: var(--ink);
-  letter-spacing: 0.15em;
   writing-mode: vertical-rl;
+  text-transform: uppercase;
 }
 .portrait-caption {
   position: absolute;
@@ -481,7 +483,8 @@ a {
   bottom: 15px;
   left: 15px;
   color: var(--ink);
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
+  text-transform: uppercase;
 }
 .about-copy {
   order: 1;
@@ -542,9 +545,8 @@ h2 em,
 }
 .about-stats span {
   color: var(--stone);
-  font: 8px/1.35 "DM Mono";
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 .about-stats strong {
   font-size: clamp(25px, 2.5vw, 38px);
@@ -649,12 +651,10 @@ h2 em,
   background: var(--rust);
 }
 .career-row:nth-of-type(3) {
-  background: #245149;
+  background: var(--blue);
 }
 .career-row:nth-of-type(4) {
-  --career-text: var(--ink);
-  --career-muted: #615e57;
-  background: var(--cream);
+  background: var(--rust);
   border-color: #cdc9ba;
 }
 .career-marker {
@@ -674,11 +674,11 @@ h2 em,
 }
 .career-period span {
   display: inline-block;
-  padding: 8px 11px;
+  padding: 4px 8px;
   border: 1px solid currentColor;
   border-radius: 100px;
   color: var(--career-muted);
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
 }
 .career-period {
@@ -694,9 +694,8 @@ h2 em,
   display: block;
   margin-bottom: 22px;
   color: var(--career-text);
-  font: 10px "DM Mono";
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 .career-main p {
   color: var(--career-muted);
@@ -711,9 +710,8 @@ h2 em,
   display: block;
   margin-bottom: 14px;
   color: var(--career-muted);
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 .career-brands div {
   display: flex;
@@ -721,10 +719,11 @@ h2 em,
   gap: 7px;
 }
 .career-brands span {
-  padding: 8px 11px;
+  padding: 4px 8px;
   border: 1px solid currentColor;
   border-radius: 100px;
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
+  text-transform: uppercase;
 }
 .tools-showcase {
   margin-top: 42px;
@@ -805,9 +804,8 @@ h2 em,
 .products-message p {
   margin-bottom: 18px;
   color: var(--blue);
-  font: 10px "DM Mono";
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
-  letter-spacing: 0.16em;
 }
 .products-message h1 {
   max-width: 900px;
@@ -827,11 +825,12 @@ h2 em,
   border-radius: 100px;
   background: rgba(18, 17, 17, 0.35);
   color: white;
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
   opacity: 0;
   animation: productsReveal 0.5s 1.4s ease forwards;
   backdrop-filter: blur(8px);
   cursor: pointer;
+  text-transform: uppercase;
 }
 @keyframes pixelDissolve {
   0% {
@@ -860,7 +859,7 @@ h2 em,
   justify-content: center;
   gap: 18px;
   color: var(--cream);
-  font: 10px "DM Mono";
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
   transition:
     background 0.25s,
@@ -912,8 +911,9 @@ h2 em,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font: 10px "DM Mono";
+  font: 400 11px/16px "Archivo";
   color: var(--stone);
+  text-transform: uppercase;
 }
 .service-symbol {
   display: grid;
@@ -970,7 +970,7 @@ h2 em,
   gap: 25px;
   padding: 12px 20px;
   border: 1px solid var(--line);
-  font: 10px/1.7 "DM Mono";
+  font: 400 11px/1.7 "Archivo";
   color: var(--stone);
   text-transform: uppercase;
 }
@@ -1008,36 +1008,7 @@ h2 em,
   gap: 34px 18px;
   align-items: start;
 }
-.project-art {
-  width: 100%;
-  aspect-ratio: 4/5;
-  height: auto;
-  overflow: hidden;
-  position: relative;
-  background: #ccc;
-}
-.project-card.vinhos .project-art {
-  position: relative;
-}
-.project-art::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  background: var(--project-bg);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.art-inner {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
 .project-card {
-  --project-bg: #133b38;
-  --project-fg: #f4f1e3;
-  --project-muted: rgba(244, 241, 227, 0.68);
   display: block;
   outline: none;
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -1045,45 +1016,19 @@ h2 em,
 .project-card:hover {
   transform: translateY(-6px);
 }
-.project-card:hover .project-art::after,
-.project-card:focus-visible .project-art::after {
-  opacity: 1;
-}
-.project-card:hover .art-inner {
-  transform: scale(1.035);
-}
-.project-card.vinhos {
-  --project-bg: #b43c31;
-}
-.project-card.generation {
-  --project-bg: #cce839;
-  --project-fg: #151512;
-  --project-muted: rgba(21, 21, 18, 0.62);
-}
-.project-card.solverde {
-  --project-bg: #4645e3;
-}
-.project-card.cuida {
-  --project-bg: #d8a8b8;
-  --project-fg: #512e61;
-  --project-muted: rgba(81, 46, 97, 0.68);
-}
-.project-card.landing {
-  --project-bg: #f26632;
-  --project-fg: #1a130f;
-  --project-muted: rgba(26, 19, 15, 0.65);
+.project-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--blue);
 }
 .project-card:focus-visible .project-art {
-  outline: 3px solid var(--blue);
+  outline: 3px solid var(--ink);
   outline-offset: 3px;
-}
-.project-card:focus-visible .view-project {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.04);
 }
 .view-project {
   position: absolute;
-  z-index: 3;
   left: 50%;
   top: 50%;
   display: flex;
@@ -1092,217 +1037,56 @@ h2 em,
   padding: 12px 17px;
   border: 1px solid currentColor;
   border-radius: 100px;
-  background: transparent;
-  color: var(--project-fg);
-  font: 9px "DM Mono";
+  color: white;
+  font: 400 11px/16px "Archivo";
+  text-transform: uppercase;
   opacity: 0;
   transform: translate(-50%, calc(-50% + 8px));
   transition:
     opacity 0.25s,
-    transform 0.25s,
-    background 0.25s;
+    transform 0.25s;
 }
-.project-card:hover .view-project {
+.project-card:hover .view-project,
+.project-card:focus-visible .view-project {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.12);
-  transform: translate(-50%, -50%) scale(1.04);
+  transform: translate(-50%, -50%);
 }
 .project-meta {
-  display: grid;
-  grid-template-columns: 35px 1fr auto auto;
-  gap: 15px;
-  align-items: center;
   min-height: 62px;
-  padding: 14px 0;
-  margin-top: 0;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-}
-.project-meta:not(:has(> span)) {
-  grid-template-columns: 1fr auto auto;
-}
-.project-meta > span,
-.project-meta p,
-.project-meta small {
-  font: 9px "DM Mono";
-  text-transform: uppercase;
-}
-.project-meta > span {
-  color: var(--blue);
+  padding: 17px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .project-meta h3 {
-  font-size: 17px;
-  font-weight: 550;
-  letter-spacing: -0.02em;
+  font: 400 11px/16px "Archivo";
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ink);
 }
-.project-meta p,
-.project-meta small {
-  color: #747067;
+.work-more {
+  display: flex;
+  justify-content: center;
+  padding-top: 76px;
 }
-.marina .art-inner {
-  background: #133b38;
-  color: #f2e9d0;
-  padding: 8%;
+.work-more a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 8px 16px;
+  border: 1px solid var(--ink);
+  border-radius: 100px;
+  color: var(--ink);
+  font: 400 11px/16px "Archivo";
+  text-transform: uppercase;
+  transition:
+    background 0.25s,
+    color 0.25s;
 }
-.marina .art-inner b {
-  display: block;
-  font-size: clamp(70px, 10vw, 155px);
-  letter-spacing: -0.09em;
-  line-height: 0.8;
-}
-.marina .art-inner span {
-  position: absolute;
-  right: 8%;
-  bottom: 9%;
-  font-size: clamp(25px, 4vw, 60px);
-  line-height: 0.9;
-  font-weight: 700;
-  text-align: right;
-}
-.marina .art-inner i {
-  position: absolute;
-  left: 8%;
-  bottom: 10%;
-  font: 10px "DM Mono";
-}
-.marina .art-inner::after {
-  content: "";
-  position: absolute;
-  width: 65%;
-  aspect-ratio: 1;
-  border: 2px solid #e36945;
-  border-radius: 50%;
-  left: 25%;
-  top: 15%;
-}
-.vinhos .art-inner {
-  background: #c4342e;
-  color: #fcf0d4;
-  display: grid;
-  place-items: center;
-}
-.vinhos .art-inner b {
-  font: 250px/0.7 "Instrument Serif";
-  font-style: italic;
-}
-.vinhos .art-inner span {
-  position: absolute;
-  top: 7%;
-  left: 7%;
-  font-size: clamp(35px, 6vw, 85px);
-  line-height: 0.82;
-  font-weight: 800;
-  letter-spacing: -0.07em;
-}
-.vinhos .art-inner i {
-  position: absolute;
-  bottom: 7%;
-  right: 7%;
-  font: 10px "DM Mono";
-}
-.generation .art-inner {
-  background: #111;
-  color: #d7ff38;
-  padding: 7%;
-}
-.generation .art-inner b {
-  font-size: clamp(130px, 16vw, 240px);
-  line-height: 0.75;
-  letter-spacing: -0.11em;
-}
-.generation .art-inner span {
-  position: absolute;
-  right: 6%;
-  top: 36%;
-  font-size: clamp(48px, 8vw, 110px);
-  line-height: 0.7;
-  font-weight: 800;
-  text-align: right;
-  transform: rotate(-7deg);
-}
-.generation .art-inner i {
-  position: absolute;
-  left: 8%;
-  bottom: 8%;
-  color: white;
-  font: 10px "DM Mono";
-}
-.solverde .art-inner {
-  background: linear-gradient(135deg, #050e30, #164fe3);
-  color: white;
-  display: grid;
-  place-items: center;
-}
-.solverde .art-inner b {
-  display: grid;
-  place-items: center;
-  width: 40%;
-  aspect-ratio: 1;
-  border: 2px solid rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  font-size: clamp(100px, 15vw, 220px);
-  font-weight: 300;
-}
-.solverde .art-inner span {
-  position: absolute;
-  top: 7%;
-  left: 7%;
-  font: 11px "DM Mono";
-}
-.solverde .art-inner i {
-  position: absolute;
-  bottom: 7%;
-  right: 7%;
-  font: 10px "DM Mono";
-}
-.cuida .art-inner {
-  background: #e5b8c4;
-  color: #693b7a;
-  padding: 8%;
-}
-.cuida .art-inner b {
-  font: 200px/1 "Instrument Serif";
-}
-.cuida .art-inner span {
-  position: absolute;
-  left: 8%;
-  bottom: 8%;
-  font-size: clamp(65px, 10vw, 150px);
-  font-weight: 700;
-  letter-spacing: -0.08em;
-}
-.cuida .art-inner i {
-  position: absolute;
-  right: 8%;
-  bottom: 9%;
-  font: 10px "DM Mono";
-}
-.landing .art-inner {
-  background: #ff5f1f;
-  color: #1a130f;
-  padding: 8%;
-}
-.landing .art-inner b {
-  position: absolute;
-  right: 7%;
-  top: 5%;
-  font-size: 100px;
-  font-weight: 300;
-}
-.landing .art-inner span {
-  position: absolute;
-  left: 7%;
-  top: 30%;
-  font-size: clamp(50px, 8vw, 120px);
-  line-height: 0.78;
-  font-weight: 800;
-  letter-spacing: -0.08em;
-}
-.landing .art-inner i {
-  position: absolute;
-  left: 8%;
-  bottom: 8%;
-  font: 10px "DM Mono";
+.work-more a:hover {
+  background: var(--ink);
+  color: var(--cream);
 }
 
 .testimonial-heading {
@@ -1316,9 +1100,7 @@ h2 em,
 }
 .quote-card {
   padding: clamp(28px, 3vw, 42px);
-  min-height: 580px;
   border: 1px solid var(--line);
-  border-top-color: var(--blue);
   background: var(--surface);
   display: flex;
   flex-direction: column;
@@ -1329,8 +1111,7 @@ h2 em,
 }
 .quote-card blockquote {
   margin: 48px 0 56px;
-  font: clamp(28px, 2.55vw, 40px) / 1.25 "Instrument Serif";
-  letter-spacing: -0.02em;
+  font: 400 18px/31px "Archivo";
 }
 .quote-footer {
   margin-top: auto;
@@ -1363,7 +1144,7 @@ h2 em,
 .author small {
   margin-top: 4px;
   color: var(--stone);
-  font: 9px/1.5 "DM Mono";
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
 }
 .testimonial-action {
@@ -1376,9 +1157,8 @@ h2 em,
   border: 1px solid var(--line);
   border-radius: 100px;
   color: var(--cream);
-  font: 10px "DM Mono";
+  font: 400 11px/16px "Archivo";
   text-transform: uppercase;
-  letter-spacing: 0.05em;
   transition:
     background 0.25s,
     border-color 0.25s,
@@ -1404,17 +1184,17 @@ h2 em,
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin-bottom: 75px;
+  margin-bottom: 40px;
 }
 .contact-intro h2 {
   font-size: clamp(65px, 9vw, 140px);
 }
 .availability {
-  font: 9px "DM Mono";
-  letter-spacing: 0.1em;
+  font: 400 11px/16px "Archivo";
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 100px;
   padding: 11px 15px;
+  text-transform: uppercase;
 }
 .availability i {
   display: inline-block;
@@ -1428,7 +1208,6 @@ h2 em,
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 .contact-details {
   padding-right: 6vw;
@@ -1443,16 +1222,17 @@ h2 em,
 }
 .contact-details span,
 .contact-form label > span {
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
   color: rgba(255, 255, 255, 0.68);
-  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .contact-details strong {
   font-size: clamp(16px, 1.5vw, 22px);
   font-weight: 500;
 }
 .contact-details small {
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
+  text-transform: uppercase;
 }
 .socials {
   display: flex;
@@ -1468,8 +1248,9 @@ h2 em,
   padding: 10px 14px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 100px;
-  font: 10px "DM Mono";
+  font: 400 11px/16px "Archivo";
   transition: 0.25s;
+  text-transform: uppercase;
 }
 .socials a:hover {
   background: white;
@@ -1508,17 +1289,19 @@ h2 em,
   padding: 18px 22px;
   background: var(--cream);
   color: var(--ink);
-  font: 11px "DM Mono";
+  font: 400 11px/16px "Archivo";
   cursor: pointer;
   transition: 0.25s;
+  text-transform: uppercase;
 }
 .contact-form button:hover {
   background: var(--ink);
   color: white;
 }
 .form-note {
-  font: 10px "DM Mono";
+  font: 400 11px/16px "Archivo";
   margin-top: 15px;
+  text-transform: uppercase;
 }
 
 footer {
@@ -1534,8 +1317,9 @@ footer .logo-mark {
 }
 footer p,
 footer > a:last-child {
-  font: 9px "DM Mono";
+  font: 400 11px/16px "Archivo";
   color: var(--stone);
+  text-transform: uppercase;
 }
 footer > a:last-child {
   display: flex;
@@ -1710,12 +1494,6 @@ footer > a:last-child {
   .project-art {
     aspect-ratio: 4/5;
     height: auto;
-  }
-  .project-meta {
-    grid-template-columns: 30px 1fr auto;
-  }
-  .project-meta small {
-    display: none;
   }
   .quote-grid {
     grid-template-columns: 1fr;

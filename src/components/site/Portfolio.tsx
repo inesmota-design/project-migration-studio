@@ -1,52 +1,18 @@
-import { type FormEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 
 import { useSiteLanguage } from "@/lib/site-language";
 
-type Project = {
-  title: string;
-  category: string;
-  className: string;
-  year: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "Marina Póvoa de Varzim",
-    category: "Identidade visual",
-    className: "marina",
-    year: "2024",
-  },
-  {
-    title: "Vinhos & Bodas",
-    category: "Design editorial",
-    className: "vinhos",
-    year: "2023",
-  },
-  {
-    title: "My Generation",
-    category: "Cartaz · Eventos",
-    className: "generation",
-    year: "2024",
-  },
-  {
-    title: "Solverde Online",
-    category: "Social · UI",
-    className: "solverde",
-    year: "2025",
-  },
-  {
-    title: "Cuida",
-    category: "Identidade · Saúde",
-    className: "cuida",
-    year: "2023",
-  },
-  {
-    title: "Landing Pages",
-    category: "Web · Motion",
-    className: "landing",
-    year: "2024",
-  },
+const projects = [
+  "Marina Póvoa de Varzim",
+  "Vinhos & Bodas",
+  "My Generation",
+  "Solverde Online",
+  "Cuida",
+  "Landing Pages",
+  "Solverde Online",
+  "Cuida",
+  "Landing Pages",
 ];
 
 const serviceGroups = [
@@ -119,7 +85,7 @@ const career = [
       pt: "Desenvolvo identidades visuais, publicidade, web design, design editorial e estratégias de marketing personalizadas, incluindo a gestão de redes sociais e a criação de planos estratégicos para cada cliente.",
       en: "I develop visual identities, advertising, web design, editorial design and tailored marketing strategies, including social media management and strategic planning for each client.",
     },
-    names: ["Vstyle", "Incontro Bistrot", "Cacau Wine Terrace", "Aleia"],
+    names: ["Vstyle", "Incontro Bistrot", "Cacau Wine Terrace", "Aleia Treino Canino"],
   },
   {
     period: { pt: "2019 — 2022", en: "2019 — 2022" },
@@ -164,15 +130,6 @@ const englishServiceGroups = [
   },
   { title: "Visual Arts", items: ["Drawing", "Illustration", "Ceramics"] },
 ];
-
-const englishCategories: Record<string, string> = {
-  "Identidade visual": "Visual identity",
-  "Design editorial": "Editorial design",
-  "Cartaz · Eventos": "Poster · Events",
-  "Social · UI": "Social · UI",
-  "Identidade · Saúde": "Identity · Healthcare",
-  "Web · Motion": "Web · Motion",
-};
 
 const tools = [
   { name: "Adobe Photoshop", src: "/assets/tools/photoshop.svg" },
@@ -231,7 +188,6 @@ export function ProductsPage() {
 export function PortfolioPage() {
   const { language, setLanguage } = useSiteLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sent, setSent] = useState(false);
   const [typedRole, setTypedRole] = useState("");
   const journeyRef = useRef<HTMLElement>(null);
   const isEnglish = language === "EN";
@@ -254,13 +210,14 @@ export function PortfolioPage() {
         ],
         journey: "My journey",
         selectedBrands: "Selected brands",
-        downloadCv: "Download my CV",
+        downloadCv: "CV",
         services: "My services",
         selectedLead: "Selected",
         selectedEnd: "work",
-        viewProject: "VIEW PROJECT",
+        viewProject: "View project",
         projectLabel: "View",
         projectOnBehance: "on Behance",
+        moreWork: "See more work",
         testimonialLead: "What they say about",
         testimonialEnd: "my work.",
         fabioQuote:
@@ -272,14 +229,6 @@ export function PortfolioPage() {
         contactTitle: "Let's talk?",
         phone: "PHONE",
         location: "LOCATION",
-        name: "NAME",
-        message: "MESSAGE",
-        namePlaceholder: "Your name",
-        emailPlaceholder: "Your email",
-        messagePlaceholder: "Tell me about your project",
-        send: "Send message",
-        openEmail: "Open email app",
-        emailOpened: "Your email app has opened with the message ready to send.",
         rights: "All rights reserved.",
         top: "Back to top",
       }
@@ -300,13 +249,14 @@ export function PortfolioPage() {
         ],
         journey: "O meu percurso",
         selectedBrands: "Marcas selecionadas",
-        downloadCv: "Descarregar o meu CV",
+        downloadCv: "Currículo",
         services: "Os meus serviços",
         selectedLead: "Trabalho",
         selectedEnd: "selecionado",
-        viewProject: "VER PROJETO",
+        viewProject: "Ver projeto",
         projectLabel: "Ver",
         projectOnBehance: "no Behance",
+        moreWork: "Ver mais trabalhos",
         testimonialLead: "O que dizem sobre",
         testimonialEnd: "o meu trabalho.",
         fabioQuote:
@@ -318,14 +268,6 @@ export function PortfolioPage() {
         contactTitle: "Vamos falar?",
         phone: "TELEFONE",
         location: "LOCALIZAÇÃO",
-        name: "NOME",
-        message: "MENSAGEM",
-        namePlaceholder: "O teu nome",
-        emailPlaceholder: "O teu email",
-        messagePlaceholder: "Conta-me sobre o projeto",
-        send: "Enviar mensagem",
-        openEmail: "Abrir aplicação de email",
-        emailOpened: "O teu cliente de email foi aberto com a mensagem preenchida.",
         rights: "Todos os direitos reservados.",
         top: "Voltar ao topo",
       };
@@ -426,18 +368,6 @@ export function PortfolioPage() {
       window.removeEventListener("resize", updateCards);
     };
   }, []);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = String(form.get("name") || "");
-    const email = String(form.get("email") || "");
-    const message = String(form.get("message") || "");
-    const subject = encodeURIComponent(`${isEnglish ? "New project" : "Novo projeto"} — ${name}`);
-    const body = encodeURIComponent(`${copy.name}: ${name}\nEmail: ${email}\n\n${message}`);
-    setSent(true);
-    window.location.href = `mailto:inesmota.design@gmail.com?subject=${subject}&body=${body}`;
-  }
 
   return (
     <main id="top">
@@ -587,8 +517,7 @@ export function PortfolioPage() {
             <div className="tool-logos">
               {tools.map((tool) => (
                 <div className="tool-logo" key={tool.name}>
-                  <img src={tool.src} alt={tool.name} />
-                  <span>{tool.name}</span>
+                  <img src={tool.src} alt={tool.name} title={tool.name} />
                 </div>
               ))}
             </div>
@@ -631,90 +560,30 @@ export function PortfolioPage() {
           </h2>
         </div>
         <div className="project-grid">
-          {projects.map((project) => (
+          {projects.map((title, index) => (
             <a
-              className={`project-card ${project.className}`}
-              key={project.title}
+              className="project-card"
+              key={`${title}-${index}`}
               href="https://www.behance.net/inesmotadesign"
               target="_blank"
               rel="noreferrer"
-              aria-label={`${copy.projectLabel} ${project.title} ${copy.projectOnBehance}`}
+              aria-label={`${copy.projectLabel} ${title} ${copy.projectOnBehance}`}
             >
               <div className="project-art">
-                <div className="art-inner">
-                  {project.className === "marina" && (
-                    <>
-                      <b>MARINA</b>
-                      <span>
-                        PÓVOA
-                        <br />
-                        DE VARZIM
-                      </span>
-                      <i>41°22'N</i>
-                    </>
-                  )}
-                  {project.className === "vinhos" && (
-                    <>
-                      <b>&</b>
-                      <span>
-                        VINHOS
-                        <br />
-                        BODAS
-                      </span>
-                      <i>{isEnglish ? "edition 02" : "edição 02"}</i>
-                    </>
-                  )}
-                  {project.className === "generation" && (
-                    <>
-                      <b>MY</b>
-                      <span>
-                        GENE
-                        <br />
-                        RATION
-                      </span>
-                      <i>24 — 05 — 24</i>
-                    </>
-                  )}
-                  {project.className === "solverde" && (
-                    <>
-                      <b>S</b>
-                      <span>SOLVERDE.PT</span>
-                      <i>{isEnglish ? "PLAY IN STYLE" : "JOGA COM ESTILO"}</i>
-                    </>
-                  )}
-                  {project.className === "cuida" && (
-                    <>
-                      <b>+</b>
-                      <span>CUIDA.</span>
-                      <i>{isEnglish ? "healthcare without distance" : "saúde sem distância"}</i>
-                    </>
-                  )}
-                  {project.className === "landing" && (
-                    <>
-                      <b>→</b>
-                      <span>
-                        DIGITAL
-                        <br />
-                        PLACES
-                      </span>
-                      <i>scroll to explore</i>
-                    </>
-                  )}
-                </div>
                 <span className="view-project">
                   {copy.viewProject} <Arrow />
                 </span>
               </div>
               <div className="project-meta">
-                {![0, 1, 2, 4, 5].includes(projects.indexOf(project)) && (
-                  <span>0{projects.indexOf(project) + 1}</span>
-                )}
-                <h3>{project.title}</h3>
-                <p>[ {isEnglish ? englishCategories[project.category] : project.category} ]</p>
-                <small>{project.year}</small>
+                <h3>{title}</h3>
               </div>
             </a>
           ))}
+        </div>
+        <div className="work-more">
+          <a href="https://www.behance.net/inesmotadesign" target="_blank" rel="noreferrer">
+            {copy.moreWork} <Arrow />
+          </a>
         </div>
       </section>
 
@@ -819,31 +688,10 @@ export function PortfolioPage() {
               </a>
             </div>
           </div>
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <label>
-              <span>{copy.name}</span>
-              <input type="text" name="name" placeholder={copy.namePlaceholder} required />
-            </label>
-            <label>
-              <span>EMAIL</span>
-              <input type="email" name="email" placeholder={copy.emailPlaceholder} required />
-            </label>
-            <label>
-              <span>{copy.message}</span>
-              <textarea name="message" placeholder={copy.messagePlaceholder} rows={4} required />
-            </label>
-            <button type="submit">
-              {sent ? copy.openEmail : copy.send} <Arrow />
-            </button>
-            {sent && <p className="form-note">{copy.emailOpened}</p>}
-          </form>
         </div>
       </section>
 
       <footer>
-        <a href="#top" className="logo-mark">
-          INÊS MOTA
-        </a>
         <p>© 2026 Inês Mota. {copy.rights}</p>
         <a href="#top">
           {copy.top} <Arrow direction="up" />
