@@ -240,7 +240,7 @@ const tools = [
   { name: "Adobe Substance 3D", src: "/assets/tools/substance-3d.svg" },
   { name: "Figma", src: "/assets/tools/figma.png" },
   { name: "CapCut", src: "/assets/tools/capcut.webp" },
-  { name: "Canva", src: "/assets/tools/canva.png" },
+  { name: "Canva", src: "/assets/tools/canva.webp" },
   { name: "Meta", src: "/assets/tools/meta.png" },
   { name: "Notion", src: "/assets/tools/notion.png" },
 ];
@@ -323,7 +323,7 @@ export function PortfolioPage() {
         heroPrefix: "I am",
         heroRoles: ["a graphic designer", "a social media manager"],
         heroStatic:
-          "Hi! I'm Inês Mota, I am a graphic designer and a social media manager",
+          "Inês Mota, graphic designer and social media manager in Porto",
         aboutLead: "Design with ",
         aboutAccent: "strategy",
         aboutEnd: " and a focus on results.",
@@ -367,7 +367,7 @@ export function PortfolioPage() {
         heroPrefix: "sou",
         heroRoles: ["designer gráfica", "gestora de redes sociais"],
         heroStatic:
-          "Olá! Eu sou a Inês Mota sou designer gráfica e social media manager",
+          "Inês Mota, designer gráfica e social media manager no Porto",
         aboutLead: "Design com ",
         aboutAccent: "estratégia",
         aboutEnd: " e foco em resultados.",
@@ -548,7 +548,8 @@ export function PortfolioPage() {
       <section className="hero" aria-label={isEnglish ? "Introduction" : "Apresentação"}>
         <img
           className="hero-image"
-          src="/assets/ines-metro.png"
+          src="/assets/ines-metro.webp"
+          fetchPriority="high"
           alt={
             isEnglish
               ? "Inês Mota at a metro station with a moving train"
