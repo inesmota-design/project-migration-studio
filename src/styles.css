@@ -803,14 +803,14 @@ h2 em,
 }
 .products-message p {
   margin-bottom: 18px;
-  color: var(--blue);
-  font: 400 11px/16px "Archivo";
+  color: var(--blue-bright);
+  font: 400 27px/1 "Archivo";
   text-transform: uppercase;
 }
 .products-message h1 {
   max-width: 900px;
-  font: italic clamp(56px, 9vw, 140px) / 0.9 "Instrument Serif";
-  letter-spacing: -0.04em;
+  font: italic 400 80px / 1.25 "Archivo";
+  letter-spacing: -4.61px;
 }
 .products-back {
   position: absolute;
@@ -1538,7 +1538,8 @@ footer > a:last-child {
     grid-auto-rows: 6.667vh;
   }
   .products-message h1 {
-    font-size: clamp(52px, 18vw, 82px);
+    font-size: clamp(40px, 12vw, 80px);
+    letter-spacing: -0.05em;
   }
 }
 

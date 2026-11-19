@@ -128,7 +128,7 @@ const englishServiceGroups = [
       "Post Design",
     ],
   },
-  { title: "Visual Arts", items: ["Drawing", "Illustration", "Ceramics"] },
+  { title: "Graphic Arts", items: ["Drawing", "Illustration", "Ceramics"] },
 ];
 
 const tools = [
@@ -206,7 +206,7 @@ export function PortfolioPage() {
         stats: [
           { label: "Years of Experience", value: "4+" },
           { label: "Brands", value: "+32" },
-          { label: "Social media content", value: "+3,000" },
+          { label: "Social Content", value: "+3,000" },
         ],
         journey: "My journey",
         selectedBrands: "Selected brands",
@@ -245,7 +245,7 @@ export function PortfolioPage() {
         stats: [
           { label: "Anos de Experiência", value: "4+ " },
           { label: "Marcas", value: "+32" },
-          { label: "Conteúdos Redes Sociais", value: "+3.000" },
+          { label: "Conteúdos Redes", value: "+3.000" },
         ],
         journey: "O meu percurso",
         selectedBrands: "Marcas selecionadas",
