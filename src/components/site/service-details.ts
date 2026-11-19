@@ -2,7 +2,7 @@ export type ServiceDetail = {
   description: { pt: string; en: string };
   process: { pt: string[]; en: string[] };
   time: { pt: string; en: string };
-  price?: number;
+  price?: number | undefined;
 };
 
 const d = (
