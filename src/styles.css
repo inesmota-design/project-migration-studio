@@ -710,11 +710,11 @@ h2 em,
 }
 .career-brands {
   margin-top: auto;
-  padding-top: 24px;
+  padding-top: 18px;
 }
 .career-brands small {
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   color: var(--career-muted);
   font: 400 12px/16px "Archivo";
   text-transform: uppercase;
@@ -723,10 +723,10 @@ h2 em,
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 14px 8px;
 }
-/* Linked and unlinked brand chips share one box: a 44px tap area with the
-   visible pill drawn by ::before, so both look identical. */
+/* Linked and unlinked brand chips share one identical 30px pill; the link's
+   ::after grows its tappable area to 44px without changing the look. */
 .career-brands a,
 .career-brands span {
   position: relative;
@@ -734,34 +734,28 @@ h2 em,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  padding: 0 14px;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid currentColor;
   border-radius: 100px;
   font: 400 12px/16px "Archivo";
   text-transform: uppercase;
   white-space: nowrap;
   color: inherit;
 }
-.career-brands a::before,
-.career-brands span::before {
-  content: "";
-  position: absolute;
-  inset: 7px 0;
-  z-index: -1;
-  border: 1px solid currentColor;
-  border-radius: 100px;
-  transition: background 0.2s, border-color 0.2s;
-}
 .career-brands a {
   cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.career-brands a::after {
+  content: "";
+  position: absolute;
+  inset: -7px 0;
 }
 .career-brands a:hover,
 .career-brands a:focus-visible {
-  color: var(--ink);
-}
-.career-brands a:hover::before,
-.career-brands a:focus-visible::before {
   background: #fff;
+  color: var(--ink);
   border-color: #fff;
 }
 /* Exhibitions */
