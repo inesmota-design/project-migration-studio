@@ -722,30 +722,47 @@ h2 em,
 .career-brands div {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  align-items: center;
+  gap: 8px;
 }
-.career-brands a {
-  padding: 4px 8px;
-  border: 1px solid currentColor;
+/* Linked and unlinked brand chips share one box: a 44px tap area with the
+   visible pill drawn by ::before, so both look identical. */
+.career-brands a,
+.career-brands span {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 14px;
   border-radius: 100px;
   font: 400 12px/16px "Archivo";
   text-transform: uppercase;
+  white-space: nowrap;
   color: inherit;
+}
+.career-brands a::before,
+.career-brands span::before {
+  content: "";
+  position: absolute;
+  inset: 7px 0;
+  z-index: -1;
+  border: 1px solid currentColor;
+  border-radius: 100px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.career-brands a {
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
 }
 .career-brands a:hover,
 .career-brands a:focus-visible {
-  background: #fff;
   color: var(--ink);
-  border-color: #fff;
 }
-.career-brands span {
-  padding: 4px 8px;
-  border: 1px solid currentColor;
-  border-radius: 100px;
-  font: 400 12px/16px "Archivo";
-  text-transform: uppercase;
+.career-brands a:hover::before,
+.career-brands a:focus-visible::before {
+  background: #fff;
+  border-color: #fff;
 }
 /* Exhibitions */
 .exhibitions {
@@ -1846,7 +1863,6 @@ footer > a:last-child {
   border-radius: 100px; font: 400 11px/16px "Archivo"; text-transform: uppercase; color: var(--cream); background: transparent;
 }
 .contact-details .whatsapp-button:hover { background: var(--ink); border-color: var(--ink); }
-.career-brands a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* Menu button stays visible on light sections */
 .menu-button { background: var(--ink); border-color: rgb(255 255 255 / 0.25); }

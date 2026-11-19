@@ -160,7 +160,16 @@ const career = [
       pt: "Sou responsável pelo web design de diferentes sites e plataformas e pela comunicação nas redes sociais de várias marcas.",
       en: "I am responsible for the web design of different websites and platforms, as well as social media communication for several brands.",
     },
-    names: ["Solverde", "Portal da Queixa", "Ogol", "Racing Post"],
+    names: [
+      "Solverde",
+      "Portal da Queixa",
+      "Ogol",
+      "Racing Post",
+      "Mundo Bola",
+      "Aposta10",
+      "Ekonomista",
+      "ReclameAqui",
+    ],
   },
   {
     period: { pt: "2022", en: "2022" },
