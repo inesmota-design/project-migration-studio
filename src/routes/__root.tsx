@@ -87,6 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Inês Mota" },
       { name: "robots", content: "index, follow" },
+      { name: "google-site-verification", content: "EEOKIws34MZvLE2RBAyuOEbpQyaZtJojXGMahWLPLYQ" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
