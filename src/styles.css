@@ -1914,10 +1914,18 @@ footer > a:last-child {
 @media (max-width: 760px) { .service-dialog-facts { grid-template-columns: 1fr; } }
 
 /* Contact quick actions */
-.contact-details > div.contact-quick { display: flex; justify-content: center; gap: 10px; padding: 4px 0 22px; border-top: 0; }
-.contact-details .contact-quick button, .contact-details .contact-quick a {
-  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid var(--line);
-  border-radius: 100px; font: 400 11px/16px "Archivo"; text-transform: uppercase; color: var(--cream); cursor: pointer; border: 1px solid rgb(255 255 255 / 0.4); background: transparent;
+.contact-phone-row { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.contact-phone-row > a:first-child { display: inline-flex; align-items: center; min-height: 44px; }
+.contact-details .whatsapp-button {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid rgb(255 255 255 / 0.4);
+  border-radius: 100px; font: 400 11px/16px "Archivo"; text-transform: uppercase; color: var(--cream); background: transparent;
 }
-.contact-quick button:hover, .contact-quick a:hover { background: var(--blue); border-color: var(--blue); }
+.contact-details .whatsapp-button:hover { background: var(--ink); border-color: var(--ink); }
 .career-brands a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Menu button stays visible on light sections */
+.menu-button { background: var(--ink); border-color: rgb(255 255 255 / 0.25); }
+@media (min-width: 1051px) {
+  .site-header.is-compact .nav { transition: none; transform: none; display: none; }
+  .site-header.is-compact .nav.open { display: flex; }
+}

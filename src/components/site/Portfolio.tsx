@@ -297,7 +297,6 @@ export function PortfolioPage() {
   const [filter, setFilter] = useState<Category | "all">("all");
   const [openService, setOpenService] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const [copied, setCopied] = useState(false);
   const serviceDialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -314,15 +313,6 @@ export function PortfolioPage() {
     if (!openService && dialog.open) dialog.close();
   }, [openService]);
 
-  const copyPhone = async () => {
-    try {
-      await navigator.clipboard.writeText("+351914218101");
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* clipboard unavailable */
-    }
-  };
   const isEnglish = language === "EN";
 
   const copy = isEnglish
@@ -749,9 +739,9 @@ export function PortfolioPage() {
               <p className="service-dialog-kicker">{isEnglish ? "Service" : "Serviço"}</p>
               <h3 id="service-dialog-title">{name}</h3>
               <p className="service-dialog-text">{detail.description[lang]}</p>
-              <p className="service-dialog-label">{isEnglish ? "Process" : "Processo"}</p>
+              <p className="service-dialog-label">{isEnglish ? "What I deliver" : "O que entrego"}</p>
               <ol className="service-dialog-process">
-                {detail.process[lang].map((step) => (
+                {detail.deliverables[lang].map((step) => (
                   <li key={step}>{step}</li>
                 ))}
               </ol>
@@ -759,12 +749,12 @@ export function PortfolioPage() {
                 <div>
                   <dt>{isEnglish ? "Average delivery" : "Prazo médio de entrega"}</dt>
                   <dd>
-                    {detail.time[lang]} <small>{isEnglish ? "(subject to availability)" : "(consoante disponibilidade)"}</small>
+                    {detail.time[lang]}* <small>{isEnglish ? "*subject to availability" : "*consoante disponibilidade"}</small>
                   </dd>
                 </div>
                 <div>
                   <dt>{isEnglish ? "Price" : "Preço"}</dt>
-                  <dd>{detail.price ? `${isEnglish ? "From" : "A partir de"} ${detail.price}€` : isEnglish ? "Custom quote" : "Orçamento personalizado"}</dd>
+                  <dd>{detail.price[lang]}</dd>
                 </div>
               </dl>
               <a className="primary-button service-dialog-cta" href={`mailto:inesmota.design@gmail.com?subject=${subject}`}>
@@ -948,17 +938,16 @@ export function PortfolioPage() {
               <span>EMAIL</span>
               <strong>inesmota.design@gmail.com</strong>
             </a>
-            <a href="tel:+351914218101">
+            <div className="contact-phone">
               <span>{copy.phone}</span>
-              <strong>+351 914 218 101</strong>
-            </a>
-            <div className="contact-quick">
-              <button type="button" onClick={copyPhone} aria-live="polite">
-                {copied ? (isEnglish ? "Copied ✓" : "Copiado ✓") : isEnglish ? "Copy number" : "Copiar número"}
-              </button>
-              <a href="https://wa.me/351914218101" target="_blank" rel="noreferrer">
-                WhatsApp ↗
-              </a>
+              <div className="contact-phone-row">
+                <a href="tel:+351914218101">
+                  <strong>+351 914 218 101</strong>
+                </a>
+                <a className="whatsapp-button" href="https://wa.me/351914218101" target="_blank" rel="noreferrer">
+                  WhatsApp ↗
+                </a>
+              </div>
             </div>
             <div>
               <span>{copy.location}</span>
