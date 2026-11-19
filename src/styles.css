@@ -1573,7 +1573,7 @@ footer > a:last-child {
     grid-template-columns: 1fr;
   }
   .portrait-wrap {
-    aspect-ratio: 4/4.6;
+    display: none;
   }
   .about-copy {
     padding-top: 30px;
