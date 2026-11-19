@@ -287,7 +287,6 @@ export function PortfolioPage() {
           "Working with Inês on several projects has been a real privilege. She has enormous creativity and a rare ability to turn complex ideas into clear, appealing visual pieces that match each project's goals. Beyond the technical quality, she stands out for the way she shows up day to day: extremely dynamic, always willing to help, and able to solve any unexpected problem with contagious positive energy. She is a first-class professional and makes all the difference in any team.",
         download: "Download letter",
         linkedin: "Read on LinkedIn",
-        badgeText: "Let's talk · Available for new projects · ",
         contactTitle: "Let's talk?",
         phone: "PHONE",
         location: "LOCATION",
@@ -329,7 +328,6 @@ export function PortfolioPage() {
           "Trabalhar com a Inês em vários projetos tem sido um verdadeiro privilégio. Tem uma criatividade enorme e uma capacidade rara de transformar ideias complexas em peças visuais claras, apelativas e alinhadas com os objetivos de cada projeto. Além da qualidade técnica, destaca-se pela postura no dia a dia, sendo extremamente dinâmica, prestável e capaz de resolver qualquer imprevisto com uma energia positiva contagiante. É uma profissional de mão-cheia e faz toda a diferença em qualquer equipa.",
         download: "Descarregar carta",
         linkedin: "Ler no LinkedIn",
-        badgeText: "Vamos falar · Disponível para novos projetos · ",
         contactTitle: "Vamos falar?",
         phone: "TELEFONE",
         location: "LOCALIZAÇÃO",
@@ -784,25 +782,6 @@ export function PortfolioPage() {
                 Instagram design ↗
               </a>
             </div>
-          </div>
-          <div className="contact-visual">
-            <a className="contact-badge" href="mailto:inesmota.design@gmail.com">
-              <svg viewBox="0 0 200 200" className="badge-ring" aria-hidden="true">
-                <defs>
-                  <path
-                    id="badge-circle"
-                    d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"
-                    fill="none"
-                  />
-                </defs>
-                <text>
-                  <textPath href="#badge-circle">{copy.badgeText}</textPath>
-                </text>
-              </svg>
-              <span className="badge-core">
-                <Arrow />
-              </span>
-            </a>
           </div>
         </div>
       </section>
