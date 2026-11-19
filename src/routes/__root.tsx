@@ -86,8 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Explore Porto-based designer Inês Mota’s graphic design and social media portfolio, discover her services and client work, and get in touch.",
       },
       { name: "author", content: "Inês Mota" },
-      // Carried over from the original site settings, which asked search engines not to index it.
-      { name: "robots", content: "noindex" },
+      { name: "robots", content: "index, follow" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
