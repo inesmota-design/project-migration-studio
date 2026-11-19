@@ -34,3 +34,4 @@ use the editor.
 - The portfolio markup lives in `src/components/site/Portfolio.tsx` (home + Products pages), with routes in `src/routes/index.tsx` and `src/routes/produtos.tsx` as thin wrappers; why: one source for the ported single-page site.
 - PT/EN language is held in `SiteLanguageProvider` (`src/lib/site-language.tsx`) mounted in the root route; why: the choice must survive moving between pages.
 - Downloadable PDFs and site images stay in `public/assets/` (same-origin); why: the `download` filename attribute is ignored for cross-origin files.
+- The home H1 carries its full sentence in a visually hidden `.hero-static-text` span and the typewriter effect only overlays it; why: search engines must read the whole heading without running the animation.

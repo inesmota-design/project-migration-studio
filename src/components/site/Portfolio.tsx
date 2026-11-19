@@ -322,6 +322,8 @@ export function PortfolioPage() {
         heroGreeting: "Hi! I'm Inês Mota",
         heroPrefix: "I am",
         heroRoles: ["a graphic designer", "a social media manager"],
+        heroStatic:
+          "Hi! I'm Inês Mota, I am a graphic designer and a social media manager",
         aboutLead: "Design with ",
         aboutAccent: "strategy",
         aboutEnd: " and a focus on results.",
@@ -364,6 +366,8 @@ export function PortfolioPage() {
         heroGreeting: "Olá! Eu sou a Inês Mota",
         heroPrefix: "sou",
         heroRoles: ["designer gráfica", "gestora de redes sociais"],
+        heroStatic:
+          "Olá! Eu sou a Inês Mota sou designer gráfica e social media manager",
         aboutLead: "Design com ",
         aboutAccent: "estratégia",
         aboutEnd: " e foco em resultados.",
@@ -553,10 +557,8 @@ export function PortfolioPage() {
         />
         <div className="hero-shade" />
         <div className="hero-content">
-          <h1
-            className="animated-intro"
-            aria-label={`${copy.heroGreeting}. ${copy.heroPrefix} ${copy.heroRoles.join(isEnglish ? " and " : " e ")}`}
-          >
+          <h1 className="animated-intro">
+            <span className="hero-static-text">{copy.heroStatic}</span>
             <span className="hero-greeting">{copy.heroGreeting}</span>{" "}
             <span className="hero-role-line" aria-hidden="true">
               <span className="hero-role-prefix">{copy.heroPrefix}</span>{" "}
