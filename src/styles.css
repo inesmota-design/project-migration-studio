@@ -514,7 +514,7 @@ h2 em,
 .about-accent {
   font-family: "Archivo";
   font-style: italic;
-  font-weight: inherit;
+  font-weight: 400;
   color: var(--rust);
 }
 .bio {
@@ -662,21 +662,6 @@ h2 em,
 .career-row:nth-of-type(4) {
   background: var(--rust);
   border-color: #cdc9ba;
-}
-.career-marker {
-  z-index: 2;
-  position: absolute;
-  top: 16px;
-  left: 24px;
-}
-.career-marker i {
-  display: block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid #fff;
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.45);
 }
 .career-period span {
   display: inline-block;
@@ -1046,6 +1031,25 @@ h2 em,
   overflow: hidden;
   background: var(--blue);
 }
+.project-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--blue);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.project-card:hover .project-overlay,
+.project-card:focus-visible .project-overlay {
+  opacity: 1;
+}
 .project-card:focus-visible .project-art {
   outline: 3px solid var(--ink);
   outline-offset: 3px;
@@ -1143,9 +1147,10 @@ h2 em,
   color: var(--blue);
 }
 .quote-card blockquote {
-  margin: 48px 0 56px;
+  margin: 18px 0 56px;
   font: 400 18px/1.72 "Archivo";
   letter-spacing: -0.65px;
+  white-space: pre-line;
 }
 .quote-footer {
   margin-top: auto;
@@ -1242,6 +1247,62 @@ h2 em,
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.contact-visual {
+  display: grid;
+  place-items: center;
+  padding: 40px 0;
+}
+.contact-badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(320px, 80%);
+  aspect-ratio: 1;
+}
+.badge-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: badge-spin 22s linear infinite;
+}
+.badge-ring text {
+  fill: rgba(255, 255, 255, 0.85);
+  font: 400 11px "Archivo";
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.badge-core {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  color: white;
+  font-size: 26px;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    transform 0.3s;
+}
+.contact-badge:hover .badge-core,
+.contact-badge:focus-visible .badge-core {
+  background: var(--cream);
+  color: var(--blue);
+  transform: scale(1.06);
+}
+@keyframes badge-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .badge-ring {
+    animation: none;
+  }
 }
 .contact-details {
   padding-right: 6vw;

@@ -1,0 +1,10 @@
+Skipping host requirements validation logic because `PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS` env variable is set.
+{'src': '/assets/projects/marina.jpg', 'ok': True, 'w': 1400, 'h': 875}
+{'src': '/assets/projects/merchandising.jpg', 'ok': True, 'w': 1400, 'h': 933}
+{'src': '/assets/projects/sierra-cantabria.jpg', 'ok': True, 'w': 1400, 'h': 788}
+{'src': '/assets/projects/my-generation.jpg', 'ok': True, 'w': 1400, 'h': 1084}
+{'src': '/assets/projects/poster-design-jazz.jpg', 'ok': True, 'w': 1400, 'h': 1960}
+{'src': '/assets/projects/poster-design-event.png', 'ok': True, 'w': 1400, 'h': 1963}
+{'src': '/assets/projects/ilustracao.jpg', 'ok': True, 'w': 1400, 'h': 1400}
+{'src': '/assets/projects/desenho.jpg', 'ok': True, 'w': 663, 'h': 663}
+pageerrors: []

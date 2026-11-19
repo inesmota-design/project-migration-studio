@@ -4,49 +4,56 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useSiteLanguage } from "@/lib/site-language";
 
 const BEHANCE = "https://www.behance.net/inesmotadesign";
-type Project = { pt: string; en: string; href: string };
+type Project = { pt: string; en: string; href: string; image: string };
 const projects: Project[] = [
   {
     pt: "Marina Póvoa de Varzim",
     en: "Marina Póvoa de Varzim",
     href: "https://www.behance.net/gallery/151991081/Identidade-Visual",
+    image: "/assets/projects/marina.jpg",
   },
   {
     pt: "Merchandising",
     en: "Merchandising",
     href: "https://www.behance.net/gallery/181366963/Sweats-de-Curso",
+    image: "/assets/projects/merchandising.jpg",
   },
   {
     pt: "Sierra Cantabria",
     en: "Sierra Cantabria",
     href: "https://www.behance.net/gallery/203998583/Identidade-Visual-Vinho",
+    image: "/assets/projects/sierra-cantabria.jpg",
   },
   {
     pt: "My Generation",
     en: "My Generation",
     href: "https://www.behance.net/gallery/151300417/Cartaz",
+    image: "/assets/projects/my-generation.jpg",
   },
   {
     pt: "Poster Design",
     en: "Poster Design",
     href: "https://www.behance.net/gallery/152093875/Cartazes-Jazz",
+    image: "/assets/projects/poster-design-jazz.jpg",
   },
   {
     pt: "Poster Design",
     en: "Poster Design",
     href: "https://www.behance.net/gallery/243223967/Event-Visual-Identity",
+    image: "/assets/projects/poster-design-event.png",
   },
   {
     pt: "Ilustração",
     en: "Illustration",
     href: "https://www.behance.net/gallery/159899197/Polina-Bright-Inspiration",
+    image: "/assets/projects/ilustracao.jpg",
   },
   {
     pt: "Desenho",
     en: "Drawing",
     href: "https://www.behance.net/gallery/159898257/Retrato-em-grafite-A5",
+    image: "/assets/projects/desenho.jpg",
   },
-  { pt: "Solverde Online", en: "Solverde Online", href: BEHANCE },
 ];
 
 const serviceGroups = [
@@ -275,11 +282,12 @@ export function PortfolioPage() {
         fabioQuote:
           "Inês stands out for her creativity, versatility and ability to transform ideas into high-quality visual solutions. She is a responsible professional, attentive to detail and highly motivated to keep evolving.",
         inesQuote:
-          "Working with Inês means having someone available, thorough and always ready to find solutions. Her aesthetic sense and professionalism made a difference in every project we shared.",
+          "It has been a privilege to work with Inês over the last 9 months. Her passion for design is evident in every project she takes on. Beyond her talent, her contagious energy is a real boost for any team she collaborates with.\n\nI highlight her dedication, creativity and ability to turn every challenge into an opportunity 👏🏻",
         sergioQuote:
           "Working with Inês on several projects has been a real privilege. She has enormous creativity and a rare ability to turn complex ideas into clear, appealing visual pieces that match each project's goals. Beyond the technical quality, she stands out for the way she shows up day to day: extremely dynamic, always willing to help, and able to solve any unexpected problem with contagious positive energy. She is a first-class professional and makes all the difference in any team.",
         download: "Download letter",
         linkedin: "Read on LinkedIn",
+        badgeText: "Let's talk · Available for new projects · ",
         contactTitle: "Let's talk?",
         phone: "PHONE",
         location: "LOCATION",
@@ -316,11 +324,12 @@ export function PortfolioPage() {
         fabioQuote:
           "A Inês distingue-se pela sua criatividade, versatilidade e capacidade de transformar ideias em soluções visuais de elevada qualidade. É uma profissional responsável, atenta ao detalhe e com uma enorme vontade de evoluir.",
         inesQuote:
-          "Trabalhar com a Inês é contar com alguém disponível, rigorosa e sempre pronta a encontrar soluções. O seu sentido estético e profissionalismo fizeram a diferença em todos os projetos que partilhámos.",
+          "Foi um privilégio trabalhar com a Inês durante os últimos 9 meses. A sua paixão pelo design é evidente em cada projeto que abraça. Além do talento, a sua energia contagiante é um verdadeiro impulso para qualquer equipa com quem colabore.\n\nDestaco a sua dedicação, criatividade e capacidade de tornar cada desafio numa oportunidade 👏🏻",
         sergioQuote:
           "Trabalhar com a Inês em vários projetos tem sido um verdadeiro privilégio. Tem uma criatividade enorme e uma capacidade rara de transformar ideias complexas em peças visuais claras, apelativas e alinhadas com os objetivos de cada projeto. Além da qualidade técnica, destaca-se pela postura no dia a dia, sendo extremamente dinâmica, prestável e capaz de resolver qualquer imprevisto com uma energia positiva contagiante. É uma profissional de mão-cheia e faz toda a diferença em qualquer equipa.",
         download: "Descarregar carta",
         linkedin: "Ler no LinkedIn",
+        badgeText: "Vamos falar · Disponível para novos projetos · ",
         contactTitle: "Vamos falar?",
         phone: "TELEFONE",
         location: "LOCALIZAÇÃO",
@@ -544,9 +553,6 @@ export function PortfolioPage() {
               <div className="career-progress" aria-hidden="true" />
               {career.map((step) => (
                 <article className="career-row" key={`${step.company}-${step.period.pt}`}>
-                  <div className="career-marker">
-                    <i />
-                  </div>
                   <div className="career-period">
                     <span>{isEnglish ? step.period.en : step.period.pt}</span>
                   </div>
@@ -636,6 +642,8 @@ export function PortfolioPage() {
               aria-label={`${copy.projectLabel} ${project.title} ${copy.projectOnBehance}`}
             >
               <div className="project-art">
+                <img src={project.image} alt={project.title} loading="lazy" />
+                <span className="project-overlay" aria-hidden="true" />
                 <span className="view-project">
                   {copy.viewProject} <Arrow />
                 </span>
@@ -776,6 +784,25 @@ export function PortfolioPage() {
                 Instagram design ↗
               </a>
             </div>
+          </div>
+          <div className="contact-visual">
+            <a className="contact-badge" href="mailto:inesmota.design@gmail.com">
+              <svg viewBox="0 0 200 200" className="badge-ring" aria-hidden="true">
+                <defs>
+                  <path
+                    id="badge-circle"
+                    d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"
+                    fill="none"
+                  />
+                </defs>
+                <text>
+                  <textPath href="#badge-circle">{copy.badgeText}</textPath>
+                </text>
+              </svg>
+              <span className="badge-core">
+                <Arrow />
+              </span>
+            </a>
           </div>
         </div>
       </section>
