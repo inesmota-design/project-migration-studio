@@ -112,8 +112,8 @@ const exhibitions = [
     venue: { pt: "Galeria P.Artes no Marquês, Porto", en: "P.Artes Gallery in Marquês, Porto" },
     year: "2023",
     description: {
-      pt: "Nova identidade visual da Marina da Póvoa de Varzim, inspirada nas ondas do mar e na vida náutica do povo poveiro, acompanhada de um projeto de merchandising e sinalética.",
-      en: "New visual identity for the Póvoa de Varzim Marina, inspired by the sea waves and the nautical life of the local people, accompanied by a merchandising and wayfinding project.",
+      pt: "Identidade visual da Marina da Póvoa de Varzim, inspirada nas ondas do mar e na vida náutica do povo poveiro, acompanhada de um projeto de merchandising e sinalética.",
+      en: "Visual identity for the Póvoa de Varzim Marina, inspired by the sea waves and the nautical life of the local people, accompanied by a merchandising and wayfinding project.",
     },
   },
   {
