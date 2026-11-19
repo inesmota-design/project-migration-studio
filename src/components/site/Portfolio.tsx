@@ -4,18 +4,49 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useSiteLanguage } from "@/lib/site-language";
 
 const BEHANCE = "https://www.behance.net/inesmotadesign";
-const projects: { title: string; href: string }[] = [
-  { title: "Marina Póvoa de Varzim", href: "https://www.behance.net/gallery/151991081/Identidade-Visual" },
-  { title: "Merchandising", href: "https://www.behance.net/gallery/181366963/Sweats-de-Curso" },
-  { title: "Sierra Cantabria", href: "https://www.behance.net/gallery/203998583/Identidade-Visual-Vinho" },
-  ...[
-  "Solverde Online",
-  "Cuida",
-  "Landing Pages",
-  "Solverde Online",
-  "Cuida",
-  "Landing Pages",
-  ].map((title) => ({ title, href: BEHANCE })),
+type Project = { pt: string; en: string; href: string };
+const projects: Project[] = [
+  {
+    pt: "Marina Póvoa de Varzim",
+    en: "Marina Póvoa de Varzim",
+    href: "https://www.behance.net/gallery/151991081/Identidade-Visual",
+  },
+  {
+    pt: "Merchandising",
+    en: "Merchandising",
+    href: "https://www.behance.net/gallery/181366963/Sweats-de-Curso",
+  },
+  {
+    pt: "Sierra Cantabria",
+    en: "Sierra Cantabria",
+    href: "https://www.behance.net/gallery/203998583/Identidade-Visual-Vinho",
+  },
+  {
+    pt: "My Generation",
+    en: "My Generation",
+    href: "https://www.behance.net/gallery/151300417/Cartaz",
+  },
+  {
+    pt: "Poster Design",
+    en: "Poster Design",
+    href: "https://www.behance.net/gallery/152093875/Cartazes-Jazz",
+  },
+  {
+    pt: "Poster Design",
+    en: "Poster Design",
+    href: "https://www.behance.net/gallery/243223967/Event-Visual-Identity",
+  },
+  {
+    pt: "Ilustração",
+    en: "Illustration",
+    href: "https://www.behance.net/gallery/159899197/Polina-Bright-Inspiration",
+  },
+  {
+    pt: "Desenho",
+    en: "Drawing",
+    href: "https://www.behance.net/gallery/159898257/Retrato-em-grafite-A5",
+  },
+  { pt: "Solverde Online", en: "Solverde Online", href: BEHANCE },
 ];
 
 const serviceGroups = [
@@ -204,6 +235,10 @@ export function ProductsPage() {
 
 export function PortfolioPage() {
   const { language, setLanguage } = useSiteLanguage();
+  const visibleProjects = projects.map((project) => ({
+    ...project,
+    title: language === "EN" ? project.en : project.pt,
+  }));
   const [menuOpen, setMenuOpen] = useState(false);
   const [typedRole, setTypedRole] = useState("");
   const journeyRef = useRef<HTMLElement>(null);
@@ -591,14 +626,14 @@ export function PortfolioPage() {
           </h2>
         </div>
         <div className="project-grid">
-          {projects.map(({ title, href }, index) => (
+          {visibleProjects.map((project, index) => (
             <a
               className="project-card"
-              key={`${title}-${index}`}
-              href={href}
+              key={`${project.href}-${index}`}
+              href={project.href}
               target="_blank"
               rel="noreferrer"
-              aria-label={`${copy.projectLabel} ${title} ${copy.projectOnBehance}`}
+              aria-label={`${copy.projectLabel} ${project.title} ${copy.projectOnBehance}`}
             >
               <div className="project-art">
                 <span className="view-project">
@@ -606,7 +641,7 @@ export function PortfolioPage() {
                 </span>
               </div>
               <div className="project-meta">
-                <h3>{title}</h3>
+                <h3>{project.title}</h3>
               </div>
             </a>
           ))}
