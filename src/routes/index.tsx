@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { PortfolioPage } from "@/components/site/Portfolio";
 
-const title = "Inês Mota — Designer Gráfica & Social Media Manager";
+const title = "Designer Gráfica e Social Media Manager";
 const description =
-  "Inês Mota, designer gráfica e social media manager no Porto: identidade visual, web design e redes sociais com Photoshop, Illustrator, Premiere Pro, After Effects, InDesign e Figma.";
+  "Designer Gráfica e Social Media Manager no Porto, Portugal";
 const tools = [
   "Adobe Photoshop", "Adobe Illustrator", "Adobe Premiere Pro", "Adobe After Effects",
   "Adobe InDesign", "Adobe Lightroom", "Adobe Substance 3D", "Figma", "CapCut", "Canva",
