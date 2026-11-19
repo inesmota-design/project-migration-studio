@@ -112,14 +112,17 @@ const exhibitions = [
     venue: { pt: "Galeria P.Artes no Marquês, Porto", en: "P.Artes Gallery in Marquês, Porto" },
     year: "2023",
     description: {
-      pt: "Identidade visual da Marina da Póvoa de Varzim, inspirada nas ondas do mar e na vida náutica do povo poveiro, acompanhada de um projeto de merchandising e sinalética.",
+      pt: "Identidade visual para a Marina da Póvoa de Varzim, inspirada nas ondas do mar e na vida náutica do povo poveiro, acompanhada de um projeto de merchandising e sinalética.",
       en: "Visual identity for the Póvoa de Varzim Marina, inspired by the sea waves and the nautical life of the local people, accompanied by a merchandising and wayfinding project.",
     },
   },
   {
     image: "/assets/exposicoes/my-generation.jpg",
     title: { pt: "Cartaz My Generation", en: "My Generation Poster" },
-    venue: { pt: "Auditório Municipal de Vila do Conde — Curtas Vila do Conde", en: "Vila do Conde Municipal Auditorium — Curtas Vila do Conde" },
+    venue: {
+      pt: "Auditório Municipal de Vila do Conde — Curtas Vila do Conde",
+      en: "Vila do Conde Municipal Auditorium — Curtas Vila do Conde",
+    },
     year: "2022",
     description: {
       pt: "Cartaz criado para a exposição My Generation do Curtas Vila do Conde — Festival Internacional de Cinema, construído a partir de uma pegada tipográfica.",
@@ -367,7 +370,6 @@ export function PortfolioPage() {
     };
   }, [menuOpen]);
 
-
   useEffect(() => {
     const roles =
       language === "EN"
@@ -464,24 +466,20 @@ export function PortfolioPage() {
           className={menuOpen ? "nav open" : "nav"}
           aria-label={isEnglish ? "Main navigation" : "Navegação principal"}
         >
-          {["#sobre", "#servicos", "#trabalhos", "#testemunhos", "/produtos", "#contactos"].map(
-            (href, index) =>
-              href === "/produtos" ? (
-                <Link key={href} to="/produtos" onClick={() => setMenuOpen(false)}>
-                  {copy.nav[index]}
-                </Link>
-              ) : (
-                <a key={href} href={href} onClick={() => setMenuOpen(false)}>
-                  {copy.nav[index]}
-                </a>
-              ),
+          {["#sobre", "#servicos", "#trabalhos", "#testemunhos", "/produtos", "#contactos"].map((href, index) =>
+            href === "/produtos" ? (
+              <Link key={href} to="/produtos" onClick={() => setMenuOpen(false)}>
+                {copy.nav[index]}
+              </Link>
+            ) : (
+              <a key={href} href={href} onClick={() => setMenuOpen(false)}>
+                {copy.nav[index]}
+              </a>
+            ),
           )}
         </nav>
         <div className="header-actions">
-          <div
-            className="language-switch"
-            aria-label={isEnglish ? "Select language" : "Selecionar idioma"}
-          >
+          <div className="language-switch" aria-label={isEnglish ? "Select language" : "Selecionar idioma"}>
             {(["PT", "EN"] as const).map((item) => (
               <button
                 key={item}
@@ -519,9 +517,7 @@ export function PortfolioPage() {
         <div className="hero-content">
           <h1
             className="animated-intro"
-            aria-label={`${copy.heroGreeting}. ${copy.heroPrefix} ${copy.heroRoles.join(
-              isEnglish ? " and " : " e ",
-            )}`}
+            aria-label={`${copy.heroGreeting}. ${copy.heroPrefix} ${copy.heroRoles.join(isEnglish ? " and " : " e ")}`}
           >
             <span className="hero-greeting">{copy.heroGreeting}</span>
             <span className="hero-role-line" aria-hidden="true">
@@ -728,9 +724,7 @@ export function PortfolioPage() {
                 <span>FG</span>
                 <div>
                   <strong>Fábio Gomes</strong>
-                  <small>
-                    Head of Marketing · FI Group Portugal
-                  </small>
+                  <small>Head of Marketing · FI Group Portugal</small>
                 </div>
               </div>
               <a
