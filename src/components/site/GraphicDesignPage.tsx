@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Arrow, categoryLabels, projects, serviceGroups } from "./Portfolio";
 import { serviceDetails } from "./service-details";
 
-const designServices = serviceGroups[0].items;
+const designServices = serviceGroups[0]?.items ?? [];
 const examples = projects.filter((p) => p.category !== "art");
 
 export function GraphicDesignPage() {
