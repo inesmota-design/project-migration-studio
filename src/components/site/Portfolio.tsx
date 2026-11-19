@@ -259,6 +259,17 @@ export function Arrow({ direction = "right" }: { direction?: "right" | "down" | 
   );
 }
 
+function clearSectionHash() {
+  if (!window.location.hash) return;
+  window.history.replaceState(null, "", window.location.pathname + window.location.search);
+}
+
+function scrollToSection(hash: string) {
+  const target = document.getElementById(hash.slice(1));
+  if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+  clearSectionHash();
+}
+
 export function ProductsPage() {
   const { isEnglish } = useSiteLanguage();
   const navigate = useNavigate();
@@ -298,6 +309,16 @@ export function PortfolioPage() {
   const [openService, setOpenService] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const serviceDialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    if (!window.location.hash) return;
+    clearSectionHash();
+    const root = document.documentElement;
+    const previousBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = previousBehavior;
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 140);
@@ -361,7 +382,7 @@ export function PortfolioPage() {
         top: "Back to top",
       }
     : {
-        nav: ["Sobre mim", "Serviços", "Trabalhos", "Testemunhos", "Produtos", "Contatos"],
+        nav: ["Sobre mim", "Serviços", "Trabalhos", "Testemunhos", "Produtos", "Contactos"],
         menu: "Abrir menu",
         heroGreeting: "Olá! Eu sou a Inês Mota",
         heroPrefix: "sou",
@@ -514,7 +535,15 @@ export function PortfolioPage() {
                 {copy.nav[index]}
               </Link>
             ) : (
-              <a key={href} href={href} onClick={() => setMenuOpen(false)}>
+              <a
+                key={href}
+                href={href}
+                onClick={(event) => {
+                  event.preventDefault();
+                  setMenuOpen(false);
+                  scrollToSection(href);
+                }}
+              >
                 {copy.nav[index]}
               </a>
             ),
@@ -980,7 +1009,14 @@ export function PortfolioPage() {
 
       <footer>
         <p>© 2026 Inês Mota. {copy.rights}</p>
-        <a href="#top">
+        <a
+          href="#top"
+          onClick={(event) => {
+            event.preventDefault();
+            clearSectionHash();
+            window.scrollTo(0, 0);
+          }}
+        >
           {copy.top} <Arrow direction="up" />
         </a>
       </footer>
