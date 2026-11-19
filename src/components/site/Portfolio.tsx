@@ -275,6 +275,7 @@ export function PortfolioPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [typedRole, setTypedRole] = useState("");
   const journeyRef = useRef<HTMLElement>(null);
+  const [openQuote, setOpenQuote] = useState<string | null>(null);
   const isEnglish = language === "EN";
 
   const copy = isEnglish
@@ -716,7 +717,16 @@ export function PortfolioPage() {
           </h2>
         </div>
         <div className="quote-grid">
-          <article className="quote-card">
+          <article className={`quote-card${openQuote === "Fábio Gomes" ? " is-open" : ""}`}>
+            <button
+              type="button"
+              className="quote-toggle"
+              aria-expanded={openQuote === "Fábio Gomes"}
+              onClick={() => setOpenQuote(openQuote === "Fábio Gomes" ? null : "Fábio Gomes")}
+            >
+              <span>Fábio Gomes</span>
+              <span className="quote-toggle-icon" aria-hidden="true">+</span>
+            </button>
             <span className="quote-mark">“</span>
             <blockquote>{copy.fabioQuote}</blockquote>
             <div className="quote-footer">
@@ -736,7 +746,16 @@ export function PortfolioPage() {
               </a>
             </div>
           </article>
-          <article className="quote-card">
+          <article className={`quote-card${openQuote === "Inês Cristina Silva" ? " is-open" : ""}`}>
+            <button
+              type="button"
+              className="quote-toggle"
+              aria-expanded={openQuote === "Inês Cristina Silva"}
+              onClick={() => setOpenQuote(openQuote === "Inês Cristina Silva" ? null : "Inês Cristina Silva")}
+            >
+              <span>Inês Cristina Silva</span>
+              <span className="quote-toggle-icon" aria-hidden="true">+</span>
+            </button>
             <span className="quote-mark">“</span>
             <blockquote>{copy.inesQuote}</blockquote>
             <div className="quote-footer">
@@ -761,7 +780,16 @@ export function PortfolioPage() {
               </a>
             </div>
           </article>
-          <article className="quote-card">
+          <article className={`quote-card${openQuote === "Sérgio Ferreira" ? " is-open" : ""}`}>
+            <button
+              type="button"
+              className="quote-toggle"
+              aria-expanded={openQuote === "Sérgio Ferreira"}
+              onClick={() => setOpenQuote(openQuote === "Sérgio Ferreira" ? null : "Sérgio Ferreira")}
+            >
+              <span>Sérgio Ferreira</span>
+              <span className="quote-toggle-icon" aria-hidden="true">+</span>
+            </button>
             <span className="quote-mark">“</span>
             <blockquote>{copy.sergioQuote}</blockquote>
             <div className="quote-footer">

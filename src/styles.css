@@ -1118,7 +1118,7 @@ h2 em,
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 34px 18px;
+  gap: 22px 18px;
   align-items: start;
 }
 .project-card {
@@ -1248,11 +1248,13 @@ h2 em,
   flex-direction: column;
 }
 .quote-mark {
-  font: 80px/0.5 "Instrument Serif";
+  display: block;
+  height: 30px;
+  font: 80px/0.75 "Instrument Serif";
   color: var(--blue);
 }
 .quote-card blockquote {
-  margin: 18px 0 56px;
+  margin: 2px 0 56px;
   font: 400 18px/1.72 "Archivo";
   letter-spacing: -0.65px;
   white-space: pre-line;
@@ -1547,14 +1549,15 @@ footer > a:last-child {
     font-size: clamp(22px, 6.4vw, 34px);
   }
   .hero-role-line {
-    flex-direction: column;
-    gap: 8px;
-    min-height: 105px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.3em;
+    min-height: 0;
     font-size: clamp(22px, 6.4vw, 34px);
   }
   .role-switcher {
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    width: auto;
     height: 1.4em;
   }
   .section {
@@ -1669,7 +1672,7 @@ footer > a:last-child {
   }
   .project-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 20px;
   }
   .project-art {
     aspect-ratio: 808/632;
@@ -1775,3 +1778,59 @@ footer > a:last-child {
 .contact-details > a, .contact-details > div:not(.socials) { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 6px; padding: 22px 0; }
 .socials { justify-content: center; }
 .socials > span { text-align: center; }
+
+.quote-toggle {
+  display: none;
+}
+@media (max-width: 760px) {
+  .services .title-row h2 {
+    white-space: nowrap;
+    font-size: clamp(28px, 9.4vw, 48px);
+  }
+  .quote-card {
+    padding: 0;
+  }
+  .quote-toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 26px;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: 500 18px/1.2 "Archivo";
+    text-align: left;
+    cursor: pointer;
+  }
+  .quote-toggle-icon {
+    color: var(--blue);
+    font-size: 26px;
+    transition: transform 0.3s ease;
+  }
+  .quote-card.is-open .quote-toggle-icon {
+    transform: rotate(45deg);
+  }
+  .quote-card > .quote-mark,
+  .quote-card > blockquote,
+  .quote-card > .quote-footer {
+    display: none;
+  }
+  .quote-card.is-open > .quote-mark,
+  .quote-card.is-open > blockquote,
+  .quote-card.is-open > .quote-footer {
+    display: block;
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+  .quote-card.is-open > .quote-mark {
+    margin-top: 6px;
+  }
+  .quote-card.is-open > blockquote {
+    font-size: 17px;
+    margin: 2px 0 32px;
+  }
+  .quote-card.is-open > .quote-footer {
+    padding-bottom: 26px;
+  }
+}
