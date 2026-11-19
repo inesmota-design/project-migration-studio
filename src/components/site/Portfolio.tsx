@@ -16,7 +16,7 @@ const projects: Project[] = [
     pt: "Merchandising",
     en: "Merchandising",
     href: "https://www.behance.net/gallery/181366963/Sweats-de-Curso",
-    image: "/assets/projects/merchandising.jpg",
+    image: "/assets/projects/merchandising.webp",
   },
   {
     pt: "Sierra Cantabria",
@@ -34,13 +34,13 @@ const projects: Project[] = [
     pt: "Poster Design",
     en: "Poster Design",
     href: "https://www.behance.net/gallery/152093875/Cartazes-Jazz",
-    image: "/assets/projects/poster-design-jazz.jpg",
+    image: "/assets/projects/poster-design-jazz.webp",
   },
   {
     pt: "Poster Design",
     en: "Poster Design",
     href: "https://www.behance.net/gallery/243223967/Event-Visual-Identity",
-    image: "/assets/projects/poster-design-event.png",
+    image: "/assets/projects/poster-design-event.webp",
   },
   {
     pt: "Ilustração",
@@ -52,7 +52,7 @@ const projects: Project[] = [
     pt: "Desenho",
     en: "Drawing",
     href: "https://www.behance.net/gallery/159898257/Retrato-em-grafite-A5",
-    image: "/assets/projects/desenho.jpg",
+    image: "/assets/projects/desenho.webp",
   },
 ];
 

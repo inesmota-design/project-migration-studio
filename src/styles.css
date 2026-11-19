@@ -555,7 +555,7 @@ h2 em,
   text-transform: uppercase;
 }
 .about-stats strong {
-  font-size: clamp(25px, 2.5vw, 38px);
+  font-size: clamp(25px, 2.5vw, 32px);
   line-height: 1;
   font-weight: 550;
   letter-spacing: -0.05em;
@@ -1004,7 +1004,9 @@ h2 em,
   margin-bottom: 60px;
 }
 .work-heading h2 {
-  font-size: clamp(60px, 8vw, 120px);
+  font-size: clamp(60px, 8vw, 102px);
+  letter-spacing: -0.055em;
+  line-height: 0.94;
   white-space: nowrap;
 }
 .work-heading p {
@@ -1226,7 +1228,9 @@ h2 em,
   margin-bottom: 40px;
 }
 .contact-intro h2 {
-  font-size: clamp(65px, 9vw, 140px);
+  font-size: clamp(65px, 9vw, 115px);
+  letter-spacing: -0.055em;
+  line-height: 0.94;
 }
 .availability {
   font: 400 11px/16px "Archivo";
@@ -1631,3 +1635,11 @@ footer > a:last-child {
     display: none;
   }
 }
+
+/* Contact: centered layout */
+.contact-intro { flex-direction: column; align-items: center; text-align: center; gap: 24px; }
+.contact-grid { grid-template-columns: 1fr; justify-items: center; }
+.contact-details { padding-right: 0; width: min(100%, 720px); }
+.contact-details > a, .contact-details > div:not(.socials) { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 6px; padding: 22px 0; }
+.socials { justify-content: center; }
+.socials > span { text-align: center; }
