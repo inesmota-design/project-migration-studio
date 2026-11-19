@@ -224,6 +224,8 @@ export function PortfolioPage() {
           "Inês stands out for her creativity, versatility and ability to transform ideas into high-quality visual solutions. She is a responsible professional, attentive to detail and highly motivated to keep evolving.",
         inesQuote:
           "Working with Inês means having someone available, thorough and always ready to find solutions. Her aesthetic sense and professionalism made a difference in every project we shared.",
+        sergioQuote:
+          "Working with Inês on several projects has been a real privilege. She has enormous creativity and a rare ability to turn complex ideas into clear, appealing visual pieces that match each project's goals. Beyond the technical quality, she stands out for the way she shows up day to day: extremely dynamic, always willing to help, and able to solve any unexpected problem with contagious positive energy. She is a first-class professional and makes all the difference in any team.",
         download: "Download letter",
         linkedin: "Read on LinkedIn",
         contactTitle: "Let's talk?",
@@ -263,6 +265,8 @@ export function PortfolioPage() {
           "A Inês distingue-se pela sua criatividade, versatilidade e capacidade de transformar ideias em soluções visuais de elevada qualidade. É uma profissional responsável, atenta ao detalhe e com uma enorme vontade de evoluir.",
         inesQuote:
           "Trabalhar com a Inês é contar com alguém disponível, rigorosa e sempre pronta a encontrar soluções. O seu sentido estético e profissionalismo fizeram a diferença em todos os projetos que partilhámos.",
+        sergioQuote:
+          "Trabalhar com a Inês em vários projetos tem sido um verdadeiro privilégio. Tem uma criatividade enorme e uma capacidade rara de transformar ideias complexas em peças visuais claras, apelativas e alinhadas com os objetivos de cada projeto. Além da qualidade técnica, destaca-se pela postura no dia a dia, sendo extremamente dinâmica, prestável e capaz de resolver qualquer imprevisto com uma energia positiva contagiante. É uma profissional de mão-cheia e faz toda a diferença em qualquer equipa.",
         download: "Descarregar carta",
         linkedin: "Ler no LinkedIn",
         contactTitle: "Vamos falar?",
@@ -640,6 +644,31 @@ export function PortfolioPage() {
               <a
                 className="testimonial-action"
                 href="https://www.linkedin.com/in/inêsmotadesign/details/recommendations/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {copy.linkedin} <Arrow />
+              </a>
+            </div>
+          </article>
+          <article className="quote-card quote-card-wide">
+            <span className="quote-mark">“</span>
+            <blockquote>{copy.sergioQuote}</blockquote>
+            <div className="quote-footer">
+              <div className="author">
+                <span>SF</span>
+                <div>
+                  <strong>Sérgio Ferreira</strong>
+                  <small>
+                    SEO Specialist · iGaming · Growth Marketing
+                    <br />
+                    LinkedIn Recommendation
+                  </small>
+                </div>
+              </div>
+              <a
+                className="testimonial-action"
+                href="https://www.linkedin.com/in/in%C3%AAsmotadesign/details/recommendations/?detailScreenTabIndex=2"
                 target="_blank"
                 rel="noreferrer"
               >

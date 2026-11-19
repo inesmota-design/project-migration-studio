@@ -1109,6 +1109,12 @@ h2 em,
   gap: 20px;
   align-items: stretch;
 }
+.quote-card-wide {
+  grid-column: 1 / -1;
+}
+.quote-card-wide blockquote {
+  max-width: 78ch;
+}
 .quote-card {
   padding: 56px 38px 38px;
   border: 1px solid var(--line);
