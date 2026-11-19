@@ -5,7 +5,7 @@ import { useSiteLanguage } from "@/lib/site-language";
 import { serviceDetails } from "./service-details";
 
 type Category = "identity" | "posters" | "merch" | "art";
-const categoryLabels: Record<Category | "all", { pt: string; en: string }> = {
+export const categoryLabels: Record<Category | "all", { pt: string; en: string }> = {
   all: { pt: "Todos", en: "All" },
   identity: { pt: "Identidade Visual", en: "Visual Identity" },
   posters: { pt: "Cartazes", en: "Posters" },
@@ -15,7 +15,7 @@ const categoryLabels: Record<Category | "all", { pt: string; en: string }> = {
 
 const BEHANCE = "https://www.behance.net/inesmotadesign";
 type Project = { pt: string; en: string; href: string; image: string; category: Category };
-const projects: Project[] = [
+export const projects: Project[] = [
   {
     pt: "Marina Póvoa de Varzim",
     en: "Marina Póvoa de Varzim",
@@ -74,7 +74,7 @@ const projects: Project[] = [
   },
 ];
 
-const serviceGroups = [
+export const serviceGroups = [
   {
     number: "01",
     title: "Design Gráfico",
@@ -245,7 +245,7 @@ const tools = [
   { name: "Notion", src: "/assets/tools/notion.png" },
 ];
 
-function Arrow({ direction = "right" }: { direction?: "right" | "down" | "up" }) {
+export function Arrow({ direction = "right" }: { direction?: "right" | "down" | "up" }) {
   const rotations = { right: "0deg", down: "90deg", up: "-90deg" };
   return (
     <svg
@@ -693,6 +693,9 @@ export function PortfolioPage() {
             {isEnglish ? "My services" : "Os meus serviços"}
             <span className="fg-inline-italic" />
           </h2>
+          <Link to="/design-grafico" className="services-more">
+            {isEnglish ? "Graphic design services" : "Serviços de design gráfico"} <Arrow />
+          </Link>
         </div>
         <div className="service-grid">
           {(isEnglish ? englishServiceGroups : serviceGroups).map((service, groupIndex) => (
