@@ -500,7 +500,7 @@ a {
 .work-heading h2,
 .testimonial-heading h2,
 .contact-intro h2 {
-  font-size: clamp(48px, 6.3vw, 100px);
+  font-size: clamp(42px, 5.4vw, 86px);
   line-height: 0.94;
   letter-spacing: -0.055em;
   font-weight: 650;
@@ -1004,7 +1004,7 @@ h2 em,
   margin-bottom: 60px;
 }
 .work-heading h2 {
-  font-size: clamp(60px, 8vw, 102px);
+  font-size: clamp(50px, 6.8vw, 88px);
   letter-spacing: -0.055em;
   line-height: 0.94;
   white-space: nowrap;
@@ -1126,7 +1126,7 @@ h2 em,
   margin-bottom: 56px;
 }
 .testimonial-heading h2 {
-  font-size: clamp(48px, 6.3vw, 81px);
+  font-size: clamp(42px, 5.4vw, 70px);
   line-height: 0.94;
   letter-spacing: -0.055em;
   font-weight: 400;
@@ -1228,7 +1228,7 @@ h2 em,
   margin-bottom: 40px;
 }
 .contact-intro h2 {
-  font-size: clamp(65px, 9vw, 115px);
+  font-size: clamp(50px, 7vw, 96px);
   letter-spacing: -0.055em;
   line-height: 0.94;
 }
@@ -1431,7 +1431,7 @@ footer > a:last-child {
     text-align: center;
   }
   .hero-image {
-    object-position: 54% center;
+    object-position: 48% center;
   }
   .animated-intro {
     column-gap: 24px;
@@ -1441,13 +1441,13 @@ footer > a:last-child {
   .hero-role-prefix,
   .typed-role {
     max-width: 100%;
-    font-size: clamp(28px, 7.8vw, 38px);
+    font-size: clamp(22px, 6.4vw, 34px);
   }
   .hero-role-line {
     flex-direction: column;
     gap: 8px;
     min-height: 105px;
-    font-size: clamp(28px, 7.8vw, 38px);
+    font-size: clamp(22px, 6.4vw, 34px);
   }
   .role-switcher {
     justify-content: center;
@@ -1537,7 +1537,7 @@ footer > a:last-child {
     grid-template-columns: 1fr;
   }
   .work-heading h2 {
-    font-size: clamp(34px, 10vw, 48px);
+    font-size: clamp(30px, 8.6vw, 42px);
   }
   .project-grid {
     grid-template-columns: 1fr;
@@ -1580,9 +1580,13 @@ footer > a:last-child {
     flex-wrap: wrap;
     gap: 20px;
   }
+  footer {
+    justify-content: center;
+  }
   footer p {
     order: 3;
     width: 100%;
+    text-align: center;
   }
   .pixel-grid {
     grid-template-columns: repeat(8, 1fr);

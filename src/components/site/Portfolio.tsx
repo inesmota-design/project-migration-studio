@@ -284,10 +284,10 @@ export function PortfolioPage() {
         inesQuote:
           "It has been a privilege to work with Inês over the last 9 months. Her passion for design is evident in every project she takes on. Beyond her talent, her contagious energy is a real boost for any team she collaborates with.\n\nI highlight her dedication, creativity and ability to turn every challenge into an opportunity 👏🏻",
         sergioQuote:
-          "Working with Inês on several projects has been a real privilege. She has enormous creativity and a rare ability to turn complex ideas into clear, appealing visual pieces that match each project's goals. Beyond the technical quality, she stands out for the way she shows up day to day: extremely dynamic, always willing to help, and able to solve any unexpected problem with contagious positive energy. She is a first-class professional and makes all the difference in any team.",
+          "Working with Inês on several projects has been a real privilege. She has enormous creativity and a rare ability to turn complex ideas into clear, appealing visual pieces that match each project's goals.\n\nBeyond the technical quality, she stands out for the way she shows up day to day: extremely dynamic, always willing to help, and able to solve any unexpected problem with contagious positive energy.\n\nShe is a first-class professional and makes all the difference in any team.",
         download: "Download letter",
         linkedin: "Read on LinkedIn",
-        contactTitle: "Let's talk?",
+        contactTitle: "Shall we work together?",
         phone: "PHONE",
         location: "LOCATION",
         rights: "All rights reserved.",
@@ -325,10 +325,10 @@ export function PortfolioPage() {
         inesQuote:
           "Foi um privilégio trabalhar com a Inês durante os últimos 9 meses. A sua paixão pelo design é evidente em cada projeto que abraça. Além do talento, a sua energia contagiante é um verdadeiro impulso para qualquer equipa com quem colabore.\n\nDestaco a sua dedicação, criatividade e capacidade de tornar cada desafio numa oportunidade 👏🏻",
         sergioQuote:
-          "Trabalhar com a Inês em vários projetos tem sido um verdadeiro privilégio. Tem uma criatividade enorme e uma capacidade rara de transformar ideias complexas em peças visuais claras, apelativas e alinhadas com os objetivos de cada projeto. Além da qualidade técnica, destaca-se pela postura no dia a dia, sendo extremamente dinâmica, prestável e capaz de resolver qualquer imprevisto com uma energia positiva contagiante. É uma profissional de mão-cheia e faz toda a diferença em qualquer equipa.",
+          "Trabalhar com a Inês em vários projetos tem sido um verdadeiro privilégio. Tem uma criatividade enorme e uma capacidade rara de transformar ideias complexas em peças visuais claras, apelativas e alinhadas com os objetivos de cada projeto.\n\nAlém da qualidade técnica, destaca-se pela postura no dia a dia, sendo extremamente dinâmica, prestável e capaz de resolver qualquer imprevisto com uma energia positiva contagiante.\n\nÉ uma profissional de mão-cheia e faz toda a diferença em qualquer equipa.",
         download: "Descarregar carta",
         linkedin: "Ler no LinkedIn",
-        contactTitle: "Vamos falar?",
+        contactTitle: "Vamos trabalhar juntos?",
         phone: "TELEFONE",
         location: "LOCALIZAÇÃO",
         rights: "Todos os direitos reservados.",
@@ -664,7 +664,7 @@ export function PortfolioPage() {
           <h2>
             {copy.testimonialLead}
             <br />
-            <em>{copy.testimonialEnd}</em>
+            <span>{copy.testimonialEnd}</span>
           </h2>
         </div>
         <div className="quote-grid">
@@ -756,12 +756,10 @@ export function PortfolioPage() {
             <a href="mailto:inesmota.design@gmail.com">
               <span>EMAIL</span>
               <strong>inesmota.design@gmail.com</strong>
-              <Arrow />
             </a>
             <a href="tel:+351914218101">
               <span>{copy.phone}</span>
               <strong>+351 914 218 101</strong>
-              <Arrow />
             </a>
             <div>
               <span>{copy.location}</span>
