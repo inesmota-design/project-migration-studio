@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
 
 import { useSiteLanguage } from "@/lib/site-language";
 import { serviceDetails } from "./service-details";
@@ -270,31 +269,6 @@ function scrollToSection(hash: string) {
   clearSectionHash();
 }
 
-export function ProductsPage() {
-  const { isEnglish } = useSiteLanguage();
-  const navigate = useNavigate();
-  const onBack = () => {
-    void navigate({ to: "/" }).then(() => window.scrollTo(0, 0));
-  };
-  return (
-    <main className="products-page">
-      <div className="pixel-grid" aria-hidden="true">
-        {Array.from({ length: 120 }, (_, index) => (
-          <span key={index} style={{ animationDelay: `${((index * 37) % 23) * 45}ms` }} />
-        ))}
-      </div>
-      <button className="products-back" onClick={onBack}>
-        <Arrow direction="up" />
-        {isEnglish ? "Back to portfolio" : "Voltar ao portefólio"}
-      </button>
-      <div className="products-message">
-        <p>{isEnglish ? "Products" : "Produtos"}</p>
-        <h1>{isEnglish ? "New things coming soon..." : "Novidades em breve..."}</h1>
-      </div>
-    </main>
-  );
-}
-
 export function PortfolioPage() {
   const { language, setLanguage } = useSiteLanguage();
   const visibleProjects = projects.map((project) => ({
@@ -338,7 +312,7 @@ export function PortfolioPage() {
 
   const copy = isEnglish
     ? {
-        nav: ["About", "Services", "Work", "Testimonials", "Products", "Contact"],
+        nav: ["About", "Services", "Work", "Testimonials", "Contact"],
         menu: "Open menu",
         heroGreeting: "Hi! I'm Inês Mota",
         heroPrefix: "I am",
@@ -382,7 +356,7 @@ export function PortfolioPage() {
         top: "Back to top",
       }
     : {
-        nav: ["Sobre mim", "Serviços", "Trabalhos", "Testemunhos", "Produtos", "Contactos"],
+        nav: ["Sobre mim", "Serviços", "Trabalhos", "Testemunhos", "Contactos"],
         menu: "Abrir menu",
         heroGreeting: "Olá! Eu sou a Inês Mota",
         heroPrefix: "sou",
@@ -529,25 +503,19 @@ export function PortfolioPage() {
           className={menuOpen ? "nav open" : "nav"}
           aria-label={isEnglish ? "Main navigation" : "Navegação principal"}
         >
-          {["#sobre", "#servicos", "#trabalhos", "#testemunhos", "/produtos", "#contactos"].map((href, index) =>
-            href === "/produtos" ? (
-              <Link key={href} to="/produtos" onClick={() => setMenuOpen(false)}>
-                {copy.nav[index]}
-              </Link>
-            ) : (
-              <a
-                key={href}
-                href={href}
-                onClick={(event) => {
-                  event.preventDefault();
-                  setMenuOpen(false);
-                  scrollToSection(href);
-                }}
-              >
-                {copy.nav[index]}
-              </a>
-            ),
-          )}
+          {["#sobre", "#servicos", "#trabalhos", "#testemunhos", "#contactos"].map((href, index) => (
+            <a
+              key={href}
+              href={href}
+              onClick={(event) => {
+                event.preventDefault();
+                setMenuOpen(false);
+                scrollToSection(href);
+              }}
+            >
+              {copy.nav[index]}
+            </a>
+          ))}
         </nav>
         <div className="header-actions">
           <div className="language-switch" aria-label={isEnglish ? "Select language" : "Selecionar idioma"}>
@@ -722,9 +690,6 @@ export function PortfolioPage() {
             {isEnglish ? "My services" : "Os meus serviços"}
             <span className="fg-inline-italic" />
           </h2>
-          <Link to="/design-grafico" className="services-more">
-            {isEnglish ? "Graphic design services" : "Serviços de design gráfico"} <Arrow />
-          </Link>
         </div>
         <div className="service-grid">
           {(isEnglish ? englishServiceGroups : serviceGroups).map((service, groupIndex) => (
