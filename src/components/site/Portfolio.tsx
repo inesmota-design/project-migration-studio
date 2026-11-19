@@ -46,7 +46,7 @@ const projects: Project[] = [
     pt: "Ilustração",
     en: "Illustration",
     href: "https://www.behance.net/gallery/159899197/Polina-Bright-Inspiration",
-    image: "/assets/projects/ilustracao.jpg",
+    image: "/assets/projects/ilustracao.webp",
   },
   {
     pt: "Desenho",
