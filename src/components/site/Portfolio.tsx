@@ -521,7 +521,11 @@ export function PortfolioPage() {
                 </div>
               ))}
             </div>
-            <a className="cv-download" href="/assets/cv-ines-mota.pdf" download="CV-Ines-Mota.pdf">
+            <a
+              className="cv-download"
+              href={isEnglish ? "/assets/cv-inesmota-2026-en.pdf" : "/assets/cv-inesmota-2026-pt.pdf"}
+              download={isEnglish ? "cv-inesmota-2026-en.pdf" : "cv-inesmota-2026-pt.pdf"}
+            >
               {copy.downloadCv} <Arrow direction="down" />
             </a>
           </div>
@@ -605,9 +609,7 @@ export function PortfolioPage() {
                 <div>
                   <strong>Fábio Gomes</strong>
                   <small>
-                    Senior Marketing Consultant · FI Group
-                    <br />
-                    Former Team Leader
+                    Head of Marketing · FI Group Portugal
                   </small>
                 </div>
               </div>
