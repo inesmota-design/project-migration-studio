@@ -3,16 +3,19 @@ import { Link, useNavigate } from "@tanstack/react-router";
 
 import { useSiteLanguage } from "@/lib/site-language";
 
-const projects = [
-  "Marina Póvoa de Varzim",
-  "Vinhos & Bodas",
-  "My Generation",
+const BEHANCE = "https://www.behance.net/inesmotadesign";
+const projects: { title: string; href: string }[] = [
+  { title: "Marina Póvoa de Varzim", href: "https://www.behance.net/gallery/151991081/Identidade-Visual" },
+  { title: "Merchandising", href: "https://www.behance.net/gallery/181366963/Sweats-de-Curso" },
+  { title: "Sierra Cantabria", href: "https://www.behance.net/gallery/203998583/Identidade-Visual-Vinho" },
+  ...[
   "Solverde Online",
   "Cuida",
   "Landing Pages",
   "Solverde Online",
   "Cuida",
   "Landing Pages",
+  ].map((title) => ({ title, href: BEHANCE })),
 ];
 
 const serviceGroups = [
@@ -49,6 +52,20 @@ const serviceGroups = [
     items: ["Desenho", "Ilustração", "Cerâmica"],
   },
 ];
+
+const brandLinks: Record<string, string> = {
+  Solverde:
+    "https://www.solverde.pt/casino?btag=654457_35b4a7ab33c74f58b1cdba48179284bd&gad_source=1&gad_campaignid=12312237515&gbraid=0AAAAADG5SrpmCqVHb16-AUtwXT2Ssk84B&gclid=Cj0KCQiA2frXBhC_ARIsAPTFcdMXophg_U8LMckc5GN0CZpvSMvkn_0WmgFDZtHGltG4Otnw-B07jrkaArewEALw_wcB",
+  "Portal da Queixa": "https://portaldaqueixa.com/",
+  Ogol: "https://www.ogol.com.br/",
+  "Racing Post": "https://www.racingpost.com/online-casino/",
+  "NextGen Mobility": "https://nextgenmobility.pt/",
+  Bertha: "https://berthaproject.eu/",
+  Vstyle: "https://www.instagram.com/vstyle_cabeleireiros/",
+  "Incontro Bistrot": "https://www.instagram.com/incontro.bistrot/",
+  "Cacau Wine Terrace": "https://www.instagram.com/cacauwineterrace/",
+  "Aleia Treino Canino": "https://www.instagram.com/aleia_treinocanino/",
+};
 
 const career = [
   {
@@ -466,7 +483,7 @@ export function PortfolioPage() {
           <div className="about-copy">
             <h2>
               {copy.aboutLead}
-              <span className="fg-inline-italic">{copy.aboutAccent}</span>
+              <span className="about-accent">{copy.aboutAccent}</span>
               {copy.aboutEnd}
             </h2>
             <p className="bio">{copy.bio}</p>
@@ -507,9 +524,15 @@ export function PortfolioPage() {
                     <div className="career-brands">
                       <small>{copy.selectedBrands}</small>
                       <div>
-                        {step.names.map((name) => (
-                          <span key={name}>{name}</span>
-                        ))}
+                        {step.names.map((name) =>
+                          brandLinks[name] ? (
+                            <a key={name} href={brandLinks[name]} target="_blank" rel="noreferrer">
+                              {name}
+                            </a>
+                          ) : (
+                            <span key={name}>{name}</span>
+                          ),
+                        )}
                       </div>
                     </div>
                   )}
@@ -568,11 +591,11 @@ export function PortfolioPage() {
           </h2>
         </div>
         <div className="project-grid">
-          {projects.map((title, index) => (
+          {projects.map(({ title, href }, index) => (
             <a
               className="project-card"
               key={`${title}-${index}`}
-              href="https://www.behance.net/inesmotadesign"
+              href={href}
               target="_blank"
               rel="noreferrer"
               aria-label={`${copy.projectLabel} ${title} ${copy.projectOnBehance}`}
@@ -651,7 +674,7 @@ export function PortfolioPage() {
               </a>
             </div>
           </article>
-          <article className="quote-card quote-card-wide">
+          <article className="quote-card">
             <span className="quote-mark">“</span>
             <blockquote>{copy.sergioQuote}</blockquote>
             <div className="quote-footer">

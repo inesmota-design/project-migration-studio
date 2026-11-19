@@ -447,7 +447,7 @@ a {
   display: grid;
   grid-template-columns: 1.15fr minmax(350px, 0.85fr);
   gap: 8vw;
-  align-items: start;
+  align-items: end;
 }
 .portrait-wrap {
   order: 2;
@@ -510,6 +510,12 @@ h2 em,
   font-family: "Instrument Serif";
   font-weight: 400;
   font-style: italic;
+}
+.about-accent {
+  font-family: "Archivo";
+  font-style: italic;
+  font-weight: inherit;
+  color: var(--rust);
 }
 .bio {
   margin: 48px 0;
@@ -660,16 +666,16 @@ h2 em,
 .career-marker {
   z-index: 2;
   position: absolute;
-  top: 0;
-  left: 20px;
+  top: 16px;
+  left: 24px;
 }
 .career-marker i {
   display: block;
-  width: 8px;
-  height: 8px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: currentColor;
-  border: 2px solid currentColor;
+  background: #fff;
+  border: 2px solid #fff;
   box-shadow: 0 0 16px rgba(255, 255, 255, 0.45);
 }
 .career-period span {
@@ -718,6 +724,22 @@ h2 em,
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
+}
+.career-brands a {
+  padding: 4px 8px;
+  border: 1px solid currentColor;
+  border-radius: 100px;
+  font: 400 12px/16px "Archivo";
+  text-transform: uppercase;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.career-brands a:hover,
+.career-brands a:focus-visible {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
 }
 .career-brands span {
   padding: 4px 8px;
@@ -1020,7 +1042,7 @@ h2 em,
 .project-art {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 808/632;
   overflow: hidden;
   background: var(--blue);
 }
@@ -1105,15 +1127,9 @@ h2 em,
 }
 .quote-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
   align-items: stretch;
-}
-.quote-card-wide {
-  grid-column: 1 / -1;
-}
-.quote-card-wide blockquote {
-  max-width: 78ch;
 }
 .quote-card {
   padding: 56px 38px 38px;
@@ -1345,7 +1361,16 @@ footer > a:last-child {
   align-items: center;
 }
 
+@media (min-width: 1051px) {
+  .site-header {
+    position: absolute;
+  }
+}
+
 @media (max-width: 1050px) {
+  .quote-grid {
+    grid-template-columns: 1fr;
+  }
   .nav {
     position: fixed;
     inset: 74px 0 auto;
@@ -1510,7 +1535,7 @@ footer > a:last-child {
     gap: 48px;
   }
   .project-art {
-    aspect-ratio: 4/5;
+    aspect-ratio: 808/632;
     height: auto;
   }
   .quote-grid {
