@@ -105,6 +105,29 @@ const brandLinks: Record<string, string> = {
   "Aleia Treino Canino": "https://www.instagram.com/aleia_treinocanino/",
 };
 
+const exhibitions = [
+  {
+    image: "/assets/exposicoes/marina-povoa-varzim.jpg",
+    title: { pt: "Identidade Visual — Marina Póvoa de Varzim", en: "Visual Identity — Marina Póvoa de Varzim" },
+    venue: { pt: "Galeria P.Artes no Marquês, Porto", en: "P.Artes Gallery in Marquês, Porto" },
+    year: "2023",
+    description: {
+      pt: "Nova identidade visual da Marina da Póvoa de Varzim, inspirada nas ondas do mar e na vida náutica do povo poveiro, acompanhada de um projeto de merchandising e sinalética.",
+      en: "New visual identity for the Póvoa de Varzim Marina, inspired by the sea waves and the nautical life of the local people, accompanied by a merchandising and wayfinding project.",
+    },
+  },
+  {
+    image: "/assets/exposicoes/my-generation.jpg",
+    title: { pt: "Cartaz My Generation", en: "My Generation Poster" },
+    venue: { pt: "Auditório Municipal de Vila do Conde — Curtas Vila do Conde", en: "Vila do Conde Municipal Auditorium — Curtas Vila do Conde" },
+    year: "2022",
+    description: {
+      pt: "Cartaz criado para a exposição My Generation do Curtas Vila do Conde — Festival Internacional de Cinema, construído a partir de uma pegada tipográfica.",
+      en: "Poster created for the My Generation exhibition at Curtas Vila do Conde — International Film Festival, built from a typographic footprint.",
+    },
+  },
+];
+
 const career = [
   {
     period: { pt: "Desde 2024", en: "Since 2024" },
@@ -268,6 +291,7 @@ export function PortfolioPage() {
           { label: "Social Content", value: "+3,000" },
         ],
         journey: "My journey",
+        exhibitions: "Exhibitions",
         selectedBrands: "Selected brands",
         downloadCv: "CV",
         services: "My services",
@@ -309,6 +333,7 @@ export function PortfolioPage() {
           { label: "Conteúdos Redes", value: "+3.000" },
         ],
         journey: "O meu percurso",
+        exhibitions: "Exposições",
         selectedBrands: "Marcas selecionadas",
         downloadCv: "Currículo",
         services: "Os meus serviços",
@@ -594,6 +619,33 @@ export function PortfolioPage() {
             >
               {copy.downloadCv} <Arrow direction="down" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="exhibitions" id="exposicoes">
+        <div className="exhibitions-heading">
+          <h2>{copy.exhibitions}</h2>
+        </div>
+        <div className="exhibitions-viewport">
+          <div className="exhibitions-list">
+            {exhibitions.map((exhibition) => (
+              <article className="exhibition-card" key={exhibition.title.pt}>
+                <div className="exhibition-media">
+                  <img
+                    src={exhibition.image}
+                    alt={isEnglish ? exhibition.title.en : exhibition.title.pt}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="exhibition-info">
+                  <span className="exhibition-year">{exhibition.year}</span>
+                  <h3>{isEnglish ? exhibition.title.en : exhibition.title.pt}</h3>
+                  <strong>{isEnglish ? exhibition.venue.en : exhibition.venue.pt}</strong>
+                  <p>{isEnglish ? exhibition.description.en : exhibition.description.pt}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
