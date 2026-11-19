@@ -1835,3 +1835,89 @@ footer > a:last-child {
     padding-bottom: 26px;
   }
 }
+
+/* Compact header on scroll (desktop + mobile) */
+.site-header.is-compact {
+  position: fixed;
+  pointer-events: none;
+}
+.site-header.is-compact .header-actions,
+.site-header.is-compact .nav.open {
+  pointer-events: auto;
+}
+.site-header.is-compact .language-switch { display: none; }
+.site-header.menu-open .language-switch { display: flex; }
+.site-header.is-compact .menu-button {
+  display: block;
+  background: var(--ink);
+}
+.menu-button { width: 44px; height: 44px; padding: 13px; }
+@media (min-width: 1051px) {
+  .site-header.is-compact .nav {
+    position: fixed;
+    inset: 0;
+    height: 100svh;
+    background: var(--ink);
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vw;
+    gap: 25px;
+    transform: translateX(100%);
+    transition: 0.45s ease;
+  }
+  .site-header.is-compact .nav.open { transform: none; }
+  .site-header.is-compact .nav a { font: 38px "Archivo"; letter-spacing: -0.04em; }
+  .site-header.is-compact .header-actions { z-index: 2; }
+}
+
+/* 44px touch targets */
+.nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.language-switch button { min-width: 44px; min-height: 38px; }
+.work-more a, .socials a, footer a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Work filters */
+.work-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+.work-filters button {
+  min-height: 44px; padding: 0 18px; border: 1px solid var(--line); border-radius: 100px;
+  font: 400 11px/16px "Archivo"; text-transform: uppercase; color: var(--stone); cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.work-filters button:hover { border-color: var(--blue); color: var(--cream); }
+.work-filters button.active { background: var(--blue); border-color: var(--blue); color: var(--cream); }
+
+/* Clickable services */
+.service-card li { padding: 0; }
+.service-item {
+  display: flex; align-items: center; gap: 14px; width: 100%; min-height: 46px; padding: 12px 14px;
+  text-align: left; color: inherit; font: inherit; cursor: pointer; background: none;
+}
+.service-dialog {
+  margin: auto; width: min(92vw, 620px); max-height: 90svh; padding: 0; border: 1px solid var(--line);
+  background: var(--surface); color: var(--cream);
+}
+.service-dialog::backdrop { background: rgb(0 0 0 / 0.7); }
+.service-dialog-inner { position: relative; padding: clamp(26px, 5vw, 44px); }
+.service-dialog-close {
+  position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; font-size: 28px;
+  color: var(--cream); cursor: pointer; background: none;
+}
+.service-dialog-kicker, .service-dialog-label, .service-dialog-facts dt {
+  font: 400 11px/16px "Archivo"; text-transform: uppercase; color: var(--stone);
+}
+.service-dialog h3 { font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.04em; font-weight: 550; margin: 6px 0 18px; }
+.service-dialog-text { color: #d7d3c8; font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+.service-dialog-process { list-style: decimal inside; display: grid; gap: 6px; margin: 8px 0 24px; color: #d7d3c8; font-size: 14px; }
+.service-dialog-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid var(--line); padding-top: 20px; margin-bottom: 28px; }
+.service-dialog-facts dd { margin-top: 4px; font-size: 16px; }
+.service-dialog-facts small { display: block; color: var(--stone); font-size: 12px; }
+.service-dialog-cta { min-height: 44px; }
+@media (max-width: 760px) { .service-dialog-facts { grid-template-columns: 1fr; } }
+
+/* Contact quick actions */
+.contact-details > div.contact-quick { display: flex; justify-content: center; gap: 10px; padding: 4px 0 22px; border-top: 0; }
+.contact-details .contact-quick button, .contact-details .contact-quick a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid var(--line);
+  border-radius: 100px; font: 400 11px/16px "Archivo"; text-transform: uppercase; color: var(--cream); cursor: pointer; border: 1px solid rgb(255 255 255 / 0.4); background: transparent;
+}
+.contact-quick button:hover, .contact-quick a:hover { background: var(--blue); border-color: var(--blue); }
+.career-brands a { display: inline-flex; align-items: center; min-height: 44px; }

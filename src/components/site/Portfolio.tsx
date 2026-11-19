@@ -2,57 +2,75 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 
 import { useSiteLanguage } from "@/lib/site-language";
+import { serviceDetails } from "./service-details";
+
+type Category = "identity" | "posters" | "merch" | "art";
+const categoryLabels: Record<Category | "all", { pt: string; en: string }> = {
+  all: { pt: "Todos", en: "All" },
+  identity: { pt: "Identidade Visual", en: "Visual Identity" },
+  posters: { pt: "Cartazes", en: "Posters" },
+  merch: { pt: "Merchandising", en: "Merchandising" },
+  art: { pt: "Ilustração & Desenho", en: "Illustration & Drawing" },
+};
 
 const BEHANCE = "https://www.behance.net/inesmotadesign";
-type Project = { pt: string; en: string; href: string; image: string };
+type Project = { pt: string; en: string; href: string; image: string; category: Category };
 const projects: Project[] = [
   {
     pt: "Marina Póvoa de Varzim",
     en: "Marina Póvoa de Varzim",
     href: "https://www.behance.net/gallery/151991081/Identidade-Visual",
     image: "/assets/projects/marina.jpg",
+    category: "identity",
   },
   {
     pt: "Merchandising",
     en: "Merchandising",
     href: "https://www.behance.net/gallery/181366963/Sweats-de-Curso",
     image: "/assets/projects/merchandising.webp",
+    category: "merch",
   },
   {
     pt: "Sierra Cantabria",
     en: "Sierra Cantabria",
     href: "https://www.behance.net/gallery/203998583/Identidade-Visual-Vinho",
     image: "/assets/projects/sierra-cantabria.jpg",
+    category: "identity",
   },
   {
     pt: "My Generation",
     en: "My Generation",
     href: "https://www.behance.net/gallery/151300417/Cartaz",
     image: "/assets/projects/my-generation.jpg",
+    category: "posters",
   },
   {
     pt: "Poster Design",
     en: "Poster Design",
     href: "https://www.behance.net/gallery/152093875/Cartazes-Jazz",
     image: "/assets/projects/poster-design-jazz.webp",
+    category: "posters",
   },
   {
     pt: "Poster Design",
     en: "Poster Design",
     href: "https://www.behance.net/gallery/243223967/Event-Visual-Identity",
     image: "/assets/projects/poster-design-event.webp",
+    category: "posters",
   },
   {
     pt: "Ilustração",
     en: "Illustration",
     href: "https://www.behance.net/gallery/159899197/Polina-Bright-Inspiration",
     image: "/assets/projects/ilustracao.webp",
+    category: "art",
   },
   {
     pt: "Desenho",
     en: "Drawing",
     href: "https://www.behance.net/gallery/159898257/Retrato-em-grafite-A5",
     image: "/assets/projects/desenho.webp",
+    category: "art",
   },
 ];
 
@@ -276,6 +294,35 @@ export function PortfolioPage() {
   const [typedRole, setTypedRole] = useState("");
   const journeyRef = useRef<HTMLElement>(null);
   const [openQuote, setOpenQuote] = useState<string | null>(null);
+  const [filter, setFilter] = useState<Category | "all">("all");
+  const [openService, setOpenService] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const serviceDialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 140);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const dialog = serviceDialogRef.current;
+    if (!dialog) return;
+    if (openService && !dialog.open) dialog.showModal();
+    if (!openService && dialog.open) dialog.close();
+  }, [openService]);
+
+  const copyPhone = async () => {
+    try {
+      await navigator.clipboard.writeText("+351914218101");
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
   const isEnglish = language === "EN";
 
   const copy = isEnglish
@@ -462,7 +509,7 @@ export function PortfolioPage() {
 
   return (
     <main id="top">
-      <header className="site-header">
+      <header className={`site-header${scrolled ? " is-compact" : ""}${menuOpen ? " menu-open" : ""}`}>
         <nav
           className={menuOpen ? "nav open" : "nav"}
           aria-label={isEnglish ? "Main navigation" : "Navegação principal"}
@@ -520,9 +567,9 @@ export function PortfolioPage() {
             className="animated-intro"
             aria-label={`${copy.heroGreeting}. ${copy.heroPrefix} ${copy.heroRoles.join(isEnglish ? " and " : " e ")}`}
           >
-            <span className="hero-greeting">{copy.heroGreeting}</span>
+            <span className="hero-greeting">{copy.heroGreeting}</span>{" "}
             <span className="hero-role-line" aria-hidden="true">
-              <span className="hero-role-prefix">{copy.heroPrefix}</span>
+              <span className="hero-role-prefix">{copy.heroPrefix}</span>{" "}
               <span className="role-switcher">
                 <span className="typed-role">{typedRole}</span>
               </span>
@@ -655,14 +702,21 @@ export function PortfolioPage() {
           </h2>
         </div>
         <div className="service-grid">
-          {(isEnglish ? englishServiceGroups : serviceGroups).map((service) => (
+          {(isEnglish ? englishServiceGroups : serviceGroups).map((service, groupIndex) => (
             <article className="service-card" key={service.title}>
               <h3>{service.title}</h3>
               <ul>
-                {service.items.map((item) => (
+                {service.items.map((item, itemIndex) => (
                   <li key={item}>
-                    <span>↳</span>
-                    {item}
+                    <button
+                      type="button"
+                      className="service-item"
+                      aria-haspopup="dialog"
+                      onClick={() => setOpenService(serviceGroups[groupIndex]?.items[itemIndex] ?? null)}
+                    >
+                      <span>↳</span>
+                      {item}
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -671,6 +725,56 @@ export function PortfolioPage() {
         </div>
       </section>
 
+      <dialog
+        ref={serviceDialogRef}
+        className="service-dialog"
+        onClose={() => setOpenService(null)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) setOpenService(null);
+        }}
+        aria-labelledby="service-dialog-title"
+      >
+        {openService && serviceDetails[openService] ? (() => {
+          const detail = serviceDetails[openService]!;
+          const lang = isEnglish ? "en" : "pt";
+          const groupIndex = serviceGroups.findIndex((g) => g.items.includes(openService));
+          const itemIndex = serviceGroups[groupIndex]?.items.indexOf(openService) ?? 0;
+          const name = isEnglish ? englishServiceGroups[groupIndex]?.items[itemIndex] ?? openService : openService;
+          const subject = encodeURIComponent(`${isEnglish ? "Quote request" : "Pedido de orçamento"} — ${name}`);
+          return (
+            <div className="service-dialog-inner">
+              <button type="button" className="service-dialog-close" onClick={() => setOpenService(null)} aria-label={isEnglish ? "Close" : "Fechar"}>
+                ×
+              </button>
+              <p className="service-dialog-kicker">{isEnglish ? "Service" : "Serviço"}</p>
+              <h3 id="service-dialog-title">{name}</h3>
+              <p className="service-dialog-text">{detail.description[lang]}</p>
+              <p className="service-dialog-label">{isEnglish ? "Process" : "Processo"}</p>
+              <ol className="service-dialog-process">
+                {detail.process[lang].map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+              <dl className="service-dialog-facts">
+                <div>
+                  <dt>{isEnglish ? "Average delivery" : "Prazo médio de entrega"}</dt>
+                  <dd>
+                    {detail.time[lang]} <small>{isEnglish ? "(subject to availability)" : "(consoante disponibilidade)"}</small>
+                  </dd>
+                </div>
+                <div>
+                  <dt>{isEnglish ? "Price" : "Preço"}</dt>
+                  <dd>{detail.price ? `${isEnglish ? "From" : "A partir de"} ${detail.price}€` : isEnglish ? "Custom quote" : "Orçamento personalizado"}</dd>
+                </div>
+              </dl>
+              <a className="primary-button service-dialog-cta" href={`mailto:inesmota.design@gmail.com?subject=${subject}`}>
+                {isEnglish ? "Request a quote" : "Pedir orçamento"} <Arrow />
+              </a>
+            </div>
+          );
+        })() : null}
+      </dialog>
+
       <section className="section work" id="trabalhos">
         <div className="work-heading">
           <h2>
@@ -678,8 +782,21 @@ export function PortfolioPage() {
             <span className="fg-inline-italic" />
           </h2>
         </div>
+        <div className="work-filters" role="group" aria-label={isEnglish ? "Filter by category" : "Filtrar por categoria"}>
+          {(Object.keys(categoryLabels) as (Category | "all")[]).map((key) => (
+            <button
+              key={key}
+              type="button"
+              className={filter === key ? "active" : ""}
+              aria-pressed={filter === key}
+              onClick={() => setFilter(key)}
+            >
+              {categoryLabels[key][isEnglish ? "en" : "pt"]}
+            </button>
+          ))}
+        </div>
         <div className="project-grid">
-          {visibleProjects.map((project, index) => (
+          {visibleProjects.filter((p) => filter === "all" || p.category === filter).map((project, index) => (
             <a
               className="project-card"
               key={`${project.href}-${index}`}
@@ -835,6 +952,14 @@ export function PortfolioPage() {
               <span>{copy.phone}</span>
               <strong>+351 914 218 101</strong>
             </a>
+            <div className="contact-quick">
+              <button type="button" onClick={copyPhone} aria-live="polite">
+                {copied ? (isEnglish ? "Copied ✓" : "Copiado ✓") : isEnglish ? "Copy number" : "Copiar número"}
+              </button>
+              <a href="https://wa.me/351914218101" target="_blank" rel="noreferrer">
+                WhatsApp ↗
+              </a>
+            </div>
             <div>
               <span>{copy.location}</span>
               <strong>Porto, Portugal</strong>
