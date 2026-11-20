@@ -13,6 +13,9 @@ export const categoryLabels: Record<Category | "all", { pt: string; en: string }
 };
 
 const BEHANCE = "https://www.behance.net/inesmotadesign";
+/** Resized WebP copy of a site image, e.g. /a/b.jpg -> /a/b-808.webp */
+const variant = (src: string, w: number) => src.replace(/\.(jpe?g|png|webp)$/, `-${w}.webp`);
+
 type Project = { pt: string; en: string; href: string; image: string; category: Category };
 export const projects: Project[] = [
   {
@@ -110,7 +113,7 @@ export const serviceGroups = [
 
 const brandLinks: Record<string, string> = {
   Solverde:
-    "https://www.solverde.pt/casino?btag=654457_35b4a7ab33c74f58b1cdba48179284bd&gad_source=1&gad_campaignid=12312237515&gbraid=0AAAAADG5SrpmCqVHb16-AUtwXT2Ssk84B&gclid=Cj0KCQiA2frXBhC_ARIsAPTFcdMXophg_U8LMckc5GN0CZpvSMvkn_0WmgFDZtHGltG4Otnw-B07jrkaArewEALw_wcB",
+    "https://www.solverde.pt/",
   "Portal da Queixa": "https://portaldaqueixa.com/",
   Ogol: "https://www.ogol.com.br/",
   "Racing Post": "https://www.racingpost.com/online-casino/",
@@ -246,11 +249,11 @@ const tools = [
   { name: "Adobe InDesign", src: "/assets/tools/indesign.svg" },
   { name: "Adobe Lightroom", src: "/assets/tools/lightroom.svg" },
   { name: "Adobe Substance 3D", src: "/assets/tools/substance-3d.svg" },
-  { name: "Figma", src: "/assets/tools/figma.png" },
+  { name: "Figma", src: "/assets/tools/figma.webp" },
   { name: "CapCut", src: "/assets/tools/capcut.webp" },
   { name: "Canva", src: "/assets/tools/canva.webp" },
-  { name: "Meta", src: "/assets/tools/meta.png" },
-  { name: "Notion", src: "/assets/tools/notion.png" },
+  { name: "Meta", src: "/assets/tools/meta.webp" },
+  { name: "Notion", src: "/assets/tools/notion.webp" },
 ];
 
 export function Arrow({ direction = "right" }: { direction?: "right" | "down" | "up" }) {
@@ -330,7 +333,7 @@ export function PortfolioPage() {
           "Inês Mota, graphic designer and social media manager in Porto",
         aboutLead: "Design with ",
         aboutAccent: "strategy",
-        aboutEnd: " and a focus on results.",
+        aboutEnd: " and focus on results.",
         bio: "I am a graphic designer and social media manager with experience in visual identities, digital content and communication strategies. By combining creativity with strategic thinking, I develop consistent, relevant solutions focused on each brand's goals.",
         stats: [
           { label: "Years of Experience", value: "4+" },
@@ -554,8 +557,13 @@ export function PortfolioPage() {
       <section className="hero" aria-label={isEnglish ? "Introduction" : "Apresentação"}>
         <img
           className="hero-image"
-          src="/assets/ines-metro.webp"
+          src="/assets/ines-metro-1200.webp"
+          srcSet="/assets/ines-metro-480.webp 480w, /assets/ines-metro-768.webp 768w, /assets/ines-metro-1200.webp 1200w, /assets/ines-metro.webp 1366w"
+          sizes="100vw"
+          width={1366}
+          height={768}
           fetchPriority="high"
+          decoding="async"
           alt={
             isEnglish
               ? "Inês Mota at a metro station with a moving train"
@@ -581,7 +589,11 @@ export function PortfolioPage() {
         <div className="about-grid">
           <div className="portrait-wrap">
             <img
-              src="/assets/ines-about.png"
+              src="/assets/ines-about.webp"
+              width={448}
+              height={598}
+              loading="lazy"
+              decoding="async"
               alt={
                 isEnglish
                   ? "Portrait of Inês Mota sitting in an orange chair"
@@ -606,6 +618,164 @@ export function PortfolioPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section services" id="servicos">
+        <div className="title-row">
+          <h2>
+            {isEnglish ? "My services" : "Os meus serviços"}
+            <span className="fg-inline-italic" />
+          </h2>
+        </div>
+        <div className="service-grid">
+          {(isEnglish ? englishServiceGroups : serviceGroups).map((service, groupIndex) => (
+            <article className="service-card" key={service.title}>
+              <h3>{service.title}</h3>
+              <ul>
+                {service.items.map((item, itemIndex) => (
+                  <li key={item}>
+                    <button
+                      type="button"
+                      className="service-item"
+                      aria-haspopup="dialog"
+                      onClick={() => setOpenService(serviceGroups[groupIndex]?.items[itemIndex] ?? null)}
+                    >
+                      <span>↳</span>
+                      <span className="service-item-text">
+                        {item}
+                        {(() => {
+                          const d = serviceDetails[serviceGroups[groupIndex]?.items[itemIndex] ?? ""];
+                          if (!d) return null;
+                          const l = isEnglish ? "en" : "pt";
+                          const short = d.description[l].split(/(?<=[.!?])\s/)[0];
+                          return (
+                            <small className="service-item-meta">
+                              {short} <b>{d.price[l]}</b>
+                            </small>
+                          );
+                        })()}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <dialog
+        ref={serviceDialogRef}
+        className="service-dialog"
+        onClose={() => setOpenService(null)}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) setOpenService(null);
+        }}
+        aria-labelledby={(() => {
+          const g = serviceGroups.findIndex((x) => x.items.includes(openService ?? ""));
+          return g < 0 ? undefined : `service-${g}-${serviceGroups[g]!.items.indexOf(openService!)}-title`;
+        })()}
+      >
+        {serviceGroups.flatMap((group, groupIndex) =>
+          group.items.map((serviceName, itemIndex) => {
+            const detail = serviceDetails[serviceName];
+            if (!detail) return null;
+            const lang = isEnglish ? "en" : "pt";
+            const name = isEnglish ? englishServiceGroups[groupIndex]?.items[itemIndex] ?? serviceName : serviceName;
+            const subject = encodeURIComponent(`${isEnglish ? "Quote request" : "Pedido de orçamento"} — ${name}`);
+            const id = `service-${groupIndex}-${itemIndex}`;
+            return (
+              <div className="service-dialog-inner" key={id} id={id} hidden={openService !== serviceName}>
+                <button type="button" className="service-dialog-close" onClick={() => setOpenService(null)} aria-label={isEnglish ? "Close" : "Fechar"}>
+                  ×
+                </button>
+                <p className="service-dialog-kicker">{isEnglish ? "Service" : "Serviço"}</p>
+                <h3 id={`${id}-title`}>{name}</h3>
+                <p className="service-dialog-text">{detail.description[lang]}</p>
+                <p className="service-dialog-label">{isEnglish ? "What I deliver" : "O que entrego"}</p>
+                <ol className="service-dialog-process">
+                  {detail.deliverables[lang].map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+                <dl className="service-dialog-facts">
+                  <div>
+                    <dt>{isEnglish ? "Average delivery" : "Prazo médio de entrega"}</dt>
+                    <dd>
+                      {detail.time[lang]}* <small>{isEnglish ? "*subject to availability" : "*consoante disponibilidade"}</small>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>{isEnglish ? "Price" : "Preço"}</dt>
+                    <dd>{detail.price[lang]}</dd>
+                  </div>
+                </dl>
+                <a className="primary-button service-dialog-cta" href={`mailto:inesmota.design@gmail.com?subject=${subject}`}>
+                  {isEnglish ? "Request a quote" : "Pedir orçamento"} <Arrow />
+                </a>
+              </div>
+            );
+          }),
+        )}
+      </dialog>
+
+      <section className="section work" id="trabalhos">
+        <div className="work-heading">
+          <h2>
+            {copy.selectedLead} {copy.selectedEnd}
+            <span className="fg-inline-italic" />
+          </h2>
+        </div>
+        <div className="work-filters" role="group" aria-label={isEnglish ? "Filter by category" : "Filtrar por categoria"}>
+          {(Object.keys(categoryLabels) as (Category | "all")[]).map((key) => (
+            <button
+              key={key}
+              type="button"
+              className={filter === key ? "active" : ""}
+              aria-pressed={filter === key}
+              onClick={() => setFilter(key)}
+            >
+              {categoryLabels[key][isEnglish ? "en" : "pt"]}
+            </button>
+          ))}
+        </div>
+        <div className="project-grid">
+          {visibleProjects.filter((p) => filter === "all" || p.category === filter).map((project, index) => (
+            <a
+              className="project-card"
+              key={`${project.href}-${index}`}
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${copy.projectLabel} ${project.title} ${copy.projectOnBehance}`}
+            >
+              <div className="project-art">
+                <img
+                  src={variant(project.image, 808)}
+                  srcSet={`${variant(project.image, 404)} 404w, ${variant(project.image, 808)} 808w`}
+                  sizes="(max-width: 760px) 92vw, 45vw"
+                  width={808}
+                  height={632}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="project-overlay" aria-hidden="true" />
+                <span className="view-project">
+                  {copy.viewProject} <Arrow />
+                </span>
+              </div>
+              <div className="project-meta">
+                <h3>{project.title}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div className="work-more">
+          <a href="https://www.behance.net/inesmotadesign" target="_blank" rel="noreferrer">
+            {copy.moreWork} <Arrow />
+          </a>
         </div>
       </section>
 
@@ -651,7 +821,7 @@ export function PortfolioPage() {
             <div className="tool-logos">
               {tools.map((tool) => (
                 <div className="tool-logo" key={tool.name}>
-                  <img src={tool.src} alt={tool.name} title={tool.name} />
+                  <img src={tool.src} alt={tool.name} title={tool.name} width={64} height={64} loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -676,7 +846,12 @@ export function PortfolioPage() {
               <article className="exhibition-card" key={exhibition.title.pt}>
                 <div className="exhibition-media">
                   <img
-                    src={exhibition.image}
+                    src={variant(exhibition.image, 800)}
+                    srcSet={`${variant(exhibition.image, 400)} 400w, ${variant(exhibition.image, 800)} 800w`}
+                    sizes="(max-width: 760px) 80vw, 400px"
+                    width={800}
+                    height={1265}
+                    decoding="async"
                     alt={isEnglish ? exhibition.title.en : exhibition.title.pt}
                     loading="lazy"
                   />
@@ -690,137 +865,6 @@ export function PortfolioPage() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section services" id="servicos">
-        <div className="title-row">
-          <h2>
-            {isEnglish ? "My services" : "Os meus serviços"}
-            <span className="fg-inline-italic" />
-          </h2>
-        </div>
-        <div className="service-grid">
-          {(isEnglish ? englishServiceGroups : serviceGroups).map((service, groupIndex) => (
-            <article className="service-card" key={service.title}>
-              <h3>{service.title}</h3>
-              <ul>
-                {service.items.map((item, itemIndex) => (
-                  <li key={item}>
-                    <button
-                      type="button"
-                      className="service-item"
-                      aria-haspopup="dialog"
-                      onClick={() => setOpenService(serviceGroups[groupIndex]?.items[itemIndex] ?? null)}
-                    >
-                      <span>↳</span>
-                      {item}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <dialog
-        ref={serviceDialogRef}
-        className="service-dialog"
-        onClose={() => setOpenService(null)}
-        onClick={(event) => {
-          if (event.target === event.currentTarget) setOpenService(null);
-        }}
-        aria-labelledby="service-dialog-title"
-      >
-        {openService && serviceDetails[openService] ? (() => {
-          const detail = serviceDetails[openService]!;
-          const lang = isEnglish ? "en" : "pt";
-          const groupIndex = serviceGroups.findIndex((g) => g.items.includes(openService));
-          const itemIndex = serviceGroups[groupIndex]?.items.indexOf(openService) ?? 0;
-          const name = isEnglish ? englishServiceGroups[groupIndex]?.items[itemIndex] ?? openService : openService;
-          const subject = encodeURIComponent(`${isEnglish ? "Quote request" : "Pedido de orçamento"} — ${name}`);
-          return (
-            <div className="service-dialog-inner">
-              <button type="button" className="service-dialog-close" onClick={() => setOpenService(null)} aria-label={isEnglish ? "Close" : "Fechar"}>
-                ×
-              </button>
-              <p className="service-dialog-kicker">{isEnglish ? "Service" : "Serviço"}</p>
-              <h3 id="service-dialog-title">{name}</h3>
-              <p className="service-dialog-text">{detail.description[lang]}</p>
-              <p className="service-dialog-label">{isEnglish ? "What I deliver" : "O que entrego"}</p>
-              <ol className="service-dialog-process">
-                {detail.deliverables[lang].map((step) => (
-                  <li key={step}>{step}</li>
-                ))}
-              </ol>
-              <dl className="service-dialog-facts">
-                <div>
-                  <dt>{isEnglish ? "Average delivery" : "Prazo médio de entrega"}</dt>
-                  <dd>
-                    {detail.time[lang]}* <small>{isEnglish ? "*subject to availability" : "*consoante disponibilidade"}</small>
-                  </dd>
-                </div>
-                <div>
-                  <dt>{isEnglish ? "Price" : "Preço"}</dt>
-                  <dd>{detail.price[lang]}</dd>
-                </div>
-              </dl>
-              <a className="primary-button service-dialog-cta" href={`mailto:inesmota.design@gmail.com?subject=${subject}`}>
-                {isEnglish ? "Request a quote" : "Pedir orçamento"} <Arrow />
-              </a>
-            </div>
-          );
-        })() : null}
-      </dialog>
-
-      <section className="section work" id="trabalhos">
-        <div className="work-heading">
-          <h2>
-            {copy.selectedLead} {copy.selectedEnd}
-            <span className="fg-inline-italic" />
-          </h2>
-        </div>
-        <div className="work-filters" role="group" aria-label={isEnglish ? "Filter by category" : "Filtrar por categoria"}>
-          {(Object.keys(categoryLabels) as (Category | "all")[]).map((key) => (
-            <button
-              key={key}
-              type="button"
-              className={filter === key ? "active" : ""}
-              aria-pressed={filter === key}
-              onClick={() => setFilter(key)}
-            >
-              {categoryLabels[key][isEnglish ? "en" : "pt"]}
-            </button>
-          ))}
-        </div>
-        <div className="project-grid">
-          {visibleProjects.filter((p) => filter === "all" || p.category === filter).map((project, index) => (
-            <a
-              className="project-card"
-              key={`${project.href}-${index}`}
-              href={project.href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${copy.projectLabel} ${project.title} ${copy.projectOnBehance}`}
-            >
-              <div className="project-art">
-                <img src={project.image} alt={project.title} loading="lazy" />
-                <span className="project-overlay" aria-hidden="true" />
-                <span className="view-project">
-                  {copy.viewProject} <Arrow />
-                </span>
-              </div>
-              <div className="project-meta">
-                <h3>{project.title}</h3>
-              </div>
-            </a>
-          ))}
-        </div>
-        <div className="work-more">
-          <a href="https://www.behance.net/inesmotadesign" target="_blank" rel="noreferrer">
-            {copy.moreWork} <Arrow />
-          </a>
         </div>
       </section>
 
@@ -922,7 +966,7 @@ export function PortfolioPage() {
               </div>
               <a
                 className="testimonial-action"
-                href="https://www.linkedin.com/in/in%C3%AAsmotadesign/details/recommendations/?detailScreenTabIndex=2"
+                href="https://www.linkedin.com/in/in%C3%AAsmotadesign/details/recommendations/"
                 target="_blank"
                 rel="noreferrer"
               >

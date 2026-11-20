@@ -36,3 +36,5 @@ use the editor.
 - Downloadable PDFs and site images stay in `public/assets/` (same-origin); why: the `download` filename attribute is ignored for cross-origin files.
 - The home H1 carries its full sentence in a visually hidden `.hero-static-text` span and the typewriter effect only overlays it; why: search engines must read the whole heading without running the animation.
 - In-page menu links scroll with `scrollToSection`/`clearSectionHash` and must never leave a `#section` hash in the address; why: a leftover hash makes the browser jump to that section every time the page is opened again.
+- Every service's detail (h3, description, deliverables, deadline, price) is rendered in the dialog markup on load and only toggled with `hidden`; why: search engines must read service content from the server HTML without clicking.
+- Site images ship as resized WebP variants (`name-<width>.webp`) used through `srcSet`; the hero is preloaded from the home route head; why: mobile LCP.

@@ -345,7 +345,6 @@ a {
   font-family: "Archivo";
   font-style: normal;
   font-weight: 400;
-  animation: introReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 /* Full H1 sentence, always in the HTML; the typing effect is visual only. */
 .hero-static-text {
@@ -1865,3 +1864,31 @@ footer > a:last-child {
   .site-header.is-compact .nav.open { display: flex; }
 }
 
+
+.service-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.service-card li .service-item-text,
+.service-card li .service-item-text * {
+  color: inherit;
+  transform: none;
+}
+.service-item-meta {
+  font: 400 13px/1.4 "Archivo";
+}
+.service-item-meta b {
+  display: block;
+  font-weight: 600;
+}
+.service-dialog-inner[hidden] {
+  display: none;
+}
+
+/* Contrast (WCAG AA) tweaks: same look, slightly stronger tones */
+.work-filters button { color: #6b685f; }
+.work-filters button:hover, .work-filters button.active { color: var(--cream); }
+.career-row:nth-of-type(2), .career-row:nth-of-type(4), .author > span { background: #b93f0d; }
+.career-row:nth-of-type(2), .career-row:nth-of-type(4) { --career-muted: rgba(255, 255, 255, 0.92); }
+.contact-details span, .socials > span, .contact-phone > span { color: rgba(255, 255, 255, 0.8); }

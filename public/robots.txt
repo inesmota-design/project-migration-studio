@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://inesmota-design.lovable.app/sitemap.xml
+Sitemap: https://inesmotadesign.com/sitemap.xml

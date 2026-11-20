@@ -7,3 +7,5 @@
 - [x] PT menu label must read "Contactos"
 - [x] Delete the graphic design services page and its button
 - [x] Delete the products page
+- [x] Nov 20: new CVs + letter, Sérgio link, EN "focus", section order, Solverde link, inesmotadesign.com metadata, services in HTML + card summary, mobile performance, contrast
+- [ ] Code-split below-the-fold sections (not done: the page is one component; needs a larger refactor)

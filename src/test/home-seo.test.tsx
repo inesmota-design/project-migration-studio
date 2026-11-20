@@ -24,7 +24,7 @@ describe("Home page search metadata", () => {
 
   it("serves the description Inês asked for", () => {
     expect(homeMeta().find((m) => m.name === "description")?.content).toBe(
-      "Designer gráfica Porto, especialista em identidades visuais e gestão de redes sociais para marcas que querem crescer. Peça o seu orçamento.",
+      "Designer gráfica no Porto, especialista em identidades visuais e gestão de redes sociais para marcas que querem crescer. Peça o seu orçamento.",
     );
   });
 

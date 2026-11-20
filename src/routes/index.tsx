@@ -4,19 +4,14 @@ import { PortfolioPage } from "@/components/site/Portfolio";
 
 const title = "Inês Mota | Designer Gráfica e Social Media Manager";
 const description =
-  "Designer gráfica Porto, especialista em identidades visuais e gestão de redes sociais para marcas que querem crescer. Peça o seu orçamento.";
-const url = "https://inesmota-design.lovable.app/";
-const ogImage = "https://inesmota-design.lovable.app/assets/og-image.png";
+  "Designer gráfica no Porto, especialista em identidades visuais e gestão de redes sociais para marcas que querem crescer. Peça o seu orçamento.";
+const url = "https://inesmotadesign.com/";
+const ogImage = "https://inesmotadesign.com/assets/og-image.png";
 const tools = [
   "Adobe Photoshop", "Adobe Illustrator", "Adobe Premiere Pro", "Adobe After Effects",
   "Adobe InDesign", "Adobe Lightroom", "Adobe Substance 3D", "Figma", "CapCut", "Canva",
   "Meta Business Suite", "Notion",
 ];
-const keywords = [
-  "Inês Mota", "designer gráfica Porto", "graphic designer Porto", "social media manager",
-  "identidade visual", "web design", "design editorial", "motion design", ...tools,
-].join(", ");
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -31,9 +26,19 @@ export const Route = createFileRoute("/")({
       { property: "og:image:height", content: "630" },
       { name: "twitter:image", content: ogImage },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "keywords", content: keywords },
     ],
-    links: [{ rel: "canonical", href: url }],
+    links: [
+      { rel: "canonical", href: url },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/ines-metro-1200.webp",
+        imageSrcSet:
+          "/assets/ines-metro-480.webp 480w, /assets/ines-metro-768.webp 768w, /assets/ines-metro-1200.webp 1200w, /assets/ines-metro.webp 1366w",
+        imageSizes: "100vw",
+        fetchPriority: "high",
+      },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -42,7 +47,7 @@ export const Route = createFileRoute("/")({
           "@type": "Person",
           name: "Inês Mota",
           url,
-          image: "https://inesmota-design.lovable.app/assets/ines-portrait.png",
+          image: "https://inesmotadesign.com/assets/ines-portrait.webp",
           jobTitle: "Designer Gráfica & Social Media Manager",
           address: { "@type": "PostalAddress", addressLocality: "Porto", addressCountry: "PT" },
           email: "mailto:inesmota.design@gmail.com",
