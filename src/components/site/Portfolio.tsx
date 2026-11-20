@@ -642,20 +642,7 @@ export function PortfolioPage() {
                       onClick={() => setOpenService(serviceGroups[groupIndex]?.items[itemIndex] ?? null)}
                     >
                       <span>↳</span>
-                      <span className="service-item-text">
-                        {item}
-                        {(() => {
-                          const d = serviceDetails[serviceGroups[groupIndex]?.items[itemIndex] ?? ""];
-                          if (!d) return null;
-                          const l = isEnglish ? "en" : "pt";
-                          const short = d.description[l].split(/(?<=[.!?])\s/)[0];
-                          return (
-                            <small className="service-item-meta">
-                              {short} <b>{d.price[l]}</b>
-                            </small>
-                          );
-                        })()}
-                      </span>
+                      {item}
                     </button>
                   </li>
                 ))}

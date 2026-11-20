@@ -1864,24 +1864,6 @@ footer > a:last-child {
   .site-header.is-compact .nav.open { display: flex; }
 }
 
-
-.service-item-text {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.service-card li .service-item-text,
-.service-card li .service-item-text * {
-  color: inherit;
-  transform: none;
-}
-.service-item-meta {
-  font: 400 13px/1.4 "Archivo";
-}
-.service-item-meta b {
-  display: block;
-  font-weight: 600;
-}
 .service-dialog-inner[hidden] {
   display: none;
 }
