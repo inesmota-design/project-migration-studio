@@ -886,7 +886,7 @@ export function PortfolioPage() {
               onClick={() => setOpenQuote(openQuote === "Fábio Gomes" ? null : "Fábio Gomes")}
             >
               <span>Fábio Gomes</span>
-              <span className="quote-toggle-icon" aria-hidden="true">+</span>
+              <span className="quote-toggle-icon" aria-hidden="true">{isEnglish ? "View" : "Ver"}</span>
             </button>
             <span className="quote-mark">“</span>
             <blockquote>{copy.fabioQuote}</blockquote>
@@ -915,7 +915,7 @@ export function PortfolioPage() {
               onClick={() => setOpenQuote(openQuote === "Inês Cristina Silva" ? null : "Inês Cristina Silva")}
             >
               <span>Inês Cristina Silva</span>
-              <span className="quote-toggle-icon" aria-hidden="true">+</span>
+              <span className="quote-toggle-icon" aria-hidden="true">{isEnglish ? "View" : "Ver"}</span>
             </button>
             <span className="quote-mark">“</span>
             <blockquote>{copy.inesQuote}</blockquote>
@@ -949,7 +949,7 @@ export function PortfolioPage() {
               onClick={() => setOpenQuote(openQuote === "Sérgio Ferreira" ? null : "Sérgio Ferreira")}
             >
               <span>Sérgio Ferreira</span>
-              <span className="quote-toggle-icon" aria-hidden="true">+</span>
+              <span className="quote-toggle-icon" aria-hidden="true">{isEnglish ? "View" : "Ver"}</span>
             </button>
             <span className="quote-mark">“</span>
             <blockquote>{copy.sergioQuote}</blockquote>
