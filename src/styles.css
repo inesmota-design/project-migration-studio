@@ -1477,12 +1477,8 @@ footer > a:last-child {
   .header-actions {
     right: 18px;
   }
-  .hero {
-    align-items: center;
-  }
   .hero-content {
-    padding: 0 20px;
-    transform: translateY(6svh);
+    padding: 0 20px 77px;
     text-align: center;
   }
   .hero-image {

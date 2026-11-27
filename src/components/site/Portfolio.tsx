@@ -747,7 +747,7 @@ export function PortfolioPage() {
               className="project-card"
               key={`${project.href}-${index}`}
               href={project.href}
-              target="_blank"
+             
               rel="noreferrer"
               aria-label={`${copy.projectLabel} ${project.title} ${copy.projectOnBehance}`}
             >
@@ -774,7 +774,7 @@ export function PortfolioPage() {
           ))}
         </div>
         <div className="work-more">
-          <a href="https://www.behance.net/inesmotadesign" target="_blank" rel="noreferrer">
+          <a href="https://www.behance.net/inesmotadesign" rel="noreferrer">
             {copy.moreWork} <Arrow />
           </a>
         </div>
@@ -804,7 +804,7 @@ export function PortfolioPage() {
                       <div>
                         {step.names.map((name) =>
                           brandLinks[name] ? (
-                            <a key={name} href={brandLinks[name]} target="_blank" rel="noreferrer">
+                            <a key={name} href={brandLinks[name]} rel="noreferrer">
                               {name}
                             </a>
                           ) : (
@@ -934,7 +934,7 @@ export function PortfolioPage() {
               <a
                 className="testimonial-action"
                 href="https://www.linkedin.com/in/inêsmotadesign/details/recommendations/"
-                target="_blank"
+               
                 rel="noreferrer"
               >
                 {copy.linkedin} <Arrow />
@@ -968,7 +968,7 @@ export function PortfolioPage() {
               <a
                 className="testimonial-action"
                 href="https://www.linkedin.com/in/in%C3%AAsmotadesign/details/recommendations/"
-                target="_blank"
+               
                 rel="noreferrer"
               >
                 {copy.linkedin} <Arrow />
@@ -998,7 +998,7 @@ export function PortfolioPage() {
                 <a href="tel:+351914218101">
                   <strong>+351 914 218 101</strong>
                 </a>
-                <a className="whatsapp-button" href="https://wa.me/351914218101" target="_blank" rel="noreferrer">
+                <a className="whatsapp-button" href="https://wa.me/351914218101" rel="noreferrer">
                   WhatsApp ↗
                 </a>
               </div>
@@ -1009,16 +1009,16 @@ export function PortfolioPage() {
             </div>
             <div className="socials">
               <span>SOCIAL</span>
-              <a href="https://www.behance.net/inesmotadesign" target="_blank" rel="noreferrer">
+              <a href="https://www.behance.net/inesmotadesign" rel="noreferrer">
                 Behance ↗
               </a>
-              <a href="https://www.linkedin.com/in/inêsmotadesign" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/in/inêsmotadesign" rel="noreferrer">
                 LinkedIn ↗
               </a>
-              <a href="https://www.instagram.com/inesmota.art" target="_blank" rel="noreferrer">
+              <a href="https://www.instagram.com/inesmota.art" rel="noreferrer">
                 Instagram art ↗
               </a>
-              <a href="https://www.instagram.com/inesmota.design" target="_blank" rel="noreferrer">
+              <a href="https://www.instagram.com/inesmota.design" rel="noreferrer">
                 Instagram design ↗
               </a>
             </div>
