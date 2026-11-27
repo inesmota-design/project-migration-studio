@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useSiteLanguage } from "@/lib/site-language";
 import { serviceDetails } from "./service-details";
+import { CountUp, ScrollRevealText } from "./AboutAnimations";
 
 type Category = "identity" | "social" | "posters" | "merch" | "art";
 export const categoryLabels: Record<Category | "all", { pt: string; en: string }> = {
@@ -621,12 +622,12 @@ export function PortfolioPage() {
               <span className="about-accent">{copy.aboutAccent}</span>
               {copy.aboutEnd}
             </h2>
-            <p className="bio">{copy.bio}</p>
+            <ScrollRevealText key={copy.bio} className="bio" text={copy.bio} />
             <div className="about-stats">
               {copy.stats.map((stat) => (
                 <article key={stat.label}>
                   <span>{stat.label}</span>
-                  <strong>{stat.value}</strong>
+                  <CountUp key={stat.value} value={stat.value} />
                 </article>
               ))}
             </div>
