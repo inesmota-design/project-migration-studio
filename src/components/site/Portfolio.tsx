@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import socialPortfolio from "@/assets/portfolio-social-media.pdf.asset.json";
 
 import { useSiteLanguage } from "@/lib/site-language";
 import { serviceDetails } from "./service-details";
@@ -23,7 +22,7 @@ export const projects: Project[] = [
   {
     pt: "Portfólio Social Media",
     en: "Social Media Portfolio",
-    href: socialPortfolio.url,
+    href: "https://www.behance.net/gallery/259047859/Social-Media-Portfolio",
     image: "/assets/projects/social-media.webp",
     category: "social",
   },
@@ -126,6 +125,11 @@ const brandLinks: Record<string, string> = {
   "Portal da Queixa": "https://portaldaqueixa.com/",
   Ogol: "https://www.ogol.com.br/",
   "Racing Post": "https://www.racingpost.com/online-casino/",
+  "Mundo Bola":
+    "https://jornaldofla.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAaeoZ-zKLyhyF57U_pd1wiiYKKIsGnSpyRFgyIEHtXQI097wC2cBNOVe7Gf6Tg_aem_XZcqzkh-pWix4nZeV0p3Gg",
+  Aposta10: "https://aposta10.com/",
+  Ekonomista: "https://www.e-konomista.pt/",
+  ReclameAqui: "https://www.reclameaqui.com.br/",
   "NextGen Mobility": "https://nextgenmobility.pt/",
   Bertha: "https://berthaproject.eu/",
   Vstyle: "https://www.instagram.com/vstyle_cabeleireiros/",
