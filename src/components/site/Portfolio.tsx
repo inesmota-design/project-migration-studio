@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import socialPortfolio from "@/assets/portfolio-social-media.pdf.asset.json";
 
 import { useSiteLanguage } from "@/lib/site-language";
 import { serviceDetails } from "./service-details";
 
-type Category = "identity" | "posters" | "merch" | "art";
+type Category = "identity" | "social" | "posters" | "merch" | "art";
 export const categoryLabels: Record<Category | "all", { pt: string; en: string }> = {
   all: { pt: "Todos", en: "All" },
   identity: { pt: "Identidade Visual", en: "Visual Identity" },
+  social: { pt: "Social Media", en: "Social Media" },
   posters: { pt: "Cartazes", en: "Posters" },
   merch: { pt: "Merchandising", en: "Merchandising" },
   art: { pt: "Ilustração & Desenho", en: "Illustration & Drawing" },
@@ -18,6 +20,13 @@ const variant = (src: string, w: number) => src.replace(/\.(jpe?g|png|webp)$/, `
 
 type Project = { pt: string; en: string; href: string; image: string; category: Category };
 export const projects: Project[] = [
+  {
+    pt: "Portfólio Social Media",
+    en: "Social Media Portfolio",
+    href: socialPortfolio.url,
+    image: "/assets/projects/social-media.webp",
+    category: "social",
+  },
   {
     pt: "Marina Póvoa de Varzim",
     en: "Marina Póvoa de Varzim",
@@ -160,8 +169,8 @@ const career = [
       en: "Graphic Designer & Social Media Manager",
     },
     description: {
-      pt: "Sou responsável pelo web design de diferentes sites e plataformas e pela comunicação nas redes sociais de várias marcas.",
-      en: "I am responsible for the web design of different websites and platforms, as well as social media communication for several brands.",
+      pt: "Responsável pelo web design de diferentes sites e plataformas e pela comunicação nas redes sociais de várias marcas.",
+      en: "Responsible for the web design of different websites and platforms and for social media communication for several brands.",
     },
     names: [
       "Solverde",
@@ -175,12 +184,12 @@ const career = [
     ],
   },
   {
-    period: { pt: "2022", en: "2022" },
+    period: { pt: "2023", en: "2023" },
     company: "FI Group Portugal",
     role: { pt: "Designer Gráfica", en: "Graphic Designer" },
     description: {
-      pt: "Integrei a equipa de Marketing, sendo responsável pela comunicação interna e externa da empresa, com especial destaque para a criação de identidades visuais de projetos europeus.",
-      en: "I joined the Marketing team, where I was responsible for the company's internal and external communication, with a particular focus on creating visual identities for European projects.",
+      pt: "Membro da equipa de Marketing, onde fui responsável pela comunicação interna e externa da empresa, com destaque na criação de identidades visuais para projetos europeus.",
+      en: "Member of the Marketing team, where I was responsible for the company's internal and external communication, with a focus on creating visual identities for European projects.",
     },
     names: ["NextGen Mobility", "Bertha", "SmartCryolab", "Revive"],
   },
@@ -192,8 +201,8 @@ const career = [
       en: "Graphic Designer & Social Media Manager",
     },
     description: {
-      pt: "Desenvolvo identidades visuais, publicidade, web design, design editorial e estratégias de marketing personalizadas, incluindo a gestão de redes sociais e a criação de planos estratégicos para cada cliente.",
-      en: "I develop visual identities, advertising, web design, editorial design and tailored marketing strategies, including social media management and strategic planning for each client.",
+      pt: "Trabalho com identidades visuais, publicidade, web design, design editorial e estratégias de marketing personalizadas. Paralelamente faço gestão de redes sociais, desenvolvendo planos estratégicos específicos para cada cliente.",
+      en: "I work on visual identities, advertising, web design, editorial design and tailored marketing strategies. Alongside this, I manage social media, developing specific strategic plans for each client.",
     },
     names: ["Vstyle", "Incontro Bistrot", "Cacau Wine Terrace", "Aleia Treino Canino"],
   },

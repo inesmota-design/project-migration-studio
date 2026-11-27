@@ -1432,8 +1432,9 @@ footer > a:last-child {
   }
   .nav {
     position: fixed;
-    inset: 74px 0 auto;
-    height: calc(100svh - 74px);
+    inset: 0;
+    height: 100svh;
+    z-index: 1;
     background: var(--ink);
     display: flex;
     flex-direction: column;
@@ -1470,8 +1471,8 @@ footer > a:last-child {
     padding: 0 18px;
   }
   .nav {
-    inset: 64px 0 auto;
-    height: calc(100svh - 64px);
+    inset: 0;
+    height: 100svh;
   }
   .header-actions {
     right: 18px;
@@ -1874,3 +1875,8 @@ footer > a:last-child {
 .career-row:nth-of-type(2), .career-row:nth-of-type(4), .author > span { background: #b93f0d; }
 .career-row:nth-of-type(2), .career-row:nth-of-type(4) { --career-muted: rgba(255, 255, 255, 0.92); }
 .contact-details span, .socials > span, .contact-phone > span { color: rgba(255, 255, 255, 0.8); }
+
+@media (max-width: 1050px) {
+  .header-actions { z-index: 2; }
+  .site-header.menu-open .menu-button { background: var(--ink); }
+}
